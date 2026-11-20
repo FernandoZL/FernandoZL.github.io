@@ -100,7 +100,7 @@ section{padding-block:72px}
 .c-stat b{font-family:var(--f-display);font-size:52px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
 .c-stat b em{font-style:normal;color:var(--accent)}
 .c-stat small{color:var(--muted);font-size:14px}
-.c-stat.hl b{color:var(--jade)}
+.c-stat{grid-column:span 2}
 
 /* Trayectoria */
 .legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-bottom:14px}
@@ -189,7 +189,7 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
   .hero{padding-block:48px;min-height:0}
   .hint{display:none}
   .bento,.skills,.extra{grid-template-columns:1fr}
-  .c-about{grid-column:auto;grid-row:auto}
+  .c-about,.c-stat{grid-column:auto;grid-row:auto}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
@@ -236,8 +236,6 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
         <h3>Primero entiendo el proceso. Después lo mido.</h3>
         <p>Antes de llegar a BI pasé años en comercio exterior y mejora continua. Ahí aprendí cómo se mueve una operación por dentro y dónde se pierden las horas. Esa experiencia es la que hoy pongo en cada indicador.</p>
       </div>
-      <div class="cell spot c-stat hl"><span class="label">Tiempo</span><b>−40%</b><small>en procesos automatizados</small></div>
-      <div class="cell spot c-stat hl"><span class="label">Eficiencia</span><b>+30%</b><small>con UiPath y Power Automate</small></div>
       <div class="cell spot c-stat"><span class="label">Experiencia</span><b>12<em>+</em></b><small>años, desde 2014</small></div>
       <div class="cell spot c-stat"><span class="label">GitHub</span><b>50<em>+</em></b><small>repositorios propios</small></div>
     </div>
