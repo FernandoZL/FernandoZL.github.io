@@ -269,7 +269,7 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
         <span class="label">Quién soy</span>
         <h3>Primero entiendo el proceso. Después escribo el software.</h3>
         <p>Trabajé años en exportaciones, importaciones y mejora continua. Ahí aprendí cómo se mueve una operación por dentro y dónde se pierden las horas.</p>
-        <p>Hoy desarrollo el ecosistema de aplicaciones de Corporación Carrousel: mesa de servicio, caja chica, compras, indicadores, control de TI y los tableros con los que la dirección toma decisiones.</p>
+        <p>Hoy desarrollo el ecosistema de aplicaciones de una corporación de entretenimiento familiar con parques en todo el país: mesa de servicio, caja chica, compras, indicadores, control de TI y los tableros con los que la dirección toma decisiones.</p>
         <p>Soy autodidacta y ordenado. Documento lo que construyo, pruebo antes de publicar y cuido que otra persona pueda mantenerlo.</p>
       </div>
       <div class="cell spot c-clock">
@@ -283,9 +283,9 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
         <small>repositorios con código propio</small>
       </div>
       <div class="cell spot c-stat">
-        <span class="label">Carrousel</span>
+        <span class="label">Empresa</span>
         <b>25<em>+</em></b>
-        <small>sistemas, scripts y tableros</small>
+        <small>sistemas, scripts y tableros en producción</small>
       </div>
       <div class="cell spot c-stat">
         <span class="label">Experiencia</span>
@@ -295,7 +295,7 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
       <div class="cell spot c-now">
         <span class="label">En qué estoy trabajando</span>
         <ul>
-          <li>Indicadores: metas y resultados de los Planes 2027<span>v0.9</span></li>
+          <li>Indicadores: metas y resultados de los planes anuales<span>v0.9</span></li>
           <li>Diseño compartido del ecosistema<span>v1.7</span></li>
           <li>Helpdesk rumbo a producción<span>v2.4</span></li>
           <li>Neuronas: memoria compartida para asistentes de IA<span>v5.4</span></li>
@@ -310,8 +310,8 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
 
   <section id="ecosistema">
     <div class="sec-head">
-      <h2>El Ecosistema Carrousel</h2>
-      <p>Toca cualquier pieza para ver qué hace y con qué se conecta. Todas comparten acceso, diseño y consola de mantenimiento.</p>
+      <h2>Un ecosistema empresarial</h2>
+      <p>Lo que construí en mi trabajo actual. Toca cualquier pieza para ver qué hace y con qué se conecta. Todas comparten acceso, diseño y consola de mantenimiento.</p>
     </div>
     <div class="eco" id="eco">
       <div class="col spot"><span class="label">1 · Operación</span><h3>Apps que usa el personal</h3><div class="nodes" data-col="ops"></div></div>
@@ -446,7 +446,7 @@ const N={
  caja:['ops','Caja Chica','Fondos de caja chica con liquidaciones, comprobantes y aprobaciones por rol.',['PHP','MariaDB']],
  compras:['ops','Compras','Solicitudes clasificadas según la política de compras, cotizaciones, PDF y aviso por correo.',['PHP','Dompdf','PHPMailer']],
  controlit:['ops','Control IT','Inventario de TI, servidores, respaldos, evidencias y cartas de entrega.',['PHP','MariaDB']],
- indicadores:['ops','Indicadores','Metas y resultados de los Planes de Acción 2027, con aprobación, reajustes y reporte para nóminas.',['PHP','Chart.js']],
+ indicadores:['ops','Indicadores','Metas y resultados de los planes anuales, con aprobación, reajustes y reporte para nóminas.',['PHP','Chart.js']],
  vehiculos:['ops','Control de Vehículos','Control de la flota con panel web y vista móvil.',['Laravel','Tailwind']],
  documentos:['ops','Control de Documentos','Registro y seguimiento de documentos de la empresa.',['PHP','MariaDB']],
  tickets:['ops','Tickets de Destrucción','Registro y seguimiento de los tickets de destrucción.',['PHP','MariaDB']],
@@ -458,12 +458,12 @@ const N={
  jornadas:['ops','Control de Jornadas','Registro de jornadas del personal.',['PHP']],
  portal:['ops','Portal de Sistemas','Entrada única a todas las aplicaciones del ecosistema.',['HTML','CSS']],
  sql:['data','SQL Server','Punto de venta (Semnox), SAP y RRHH: las fuentes de la empresa.',['SQL Server']],
- almacen:['data','Almacén CARROUSEL_BI','Almacén analítico separado. Copia los datos sin tocar las bases operativas ni importar datos personales.',['SQL Server','ETL']],
+ almacen:['data','Almacén analítico','Almacén analítico separado. Copia los datos sin tocar las bases operativas ni importar datos personales.',['SQL Server','ETL']],
  etl:['data','ETL de rendimientos','Prepara los datos de máquinas para los reportes.',['Batch','SQL']],
  export:['data','Exportadores','Ventas y RRHH desde SQL Server hacia los tableros.',['C#','.NET']],
  backup:['data','Respaldo a Google Drive','Respaldo automático de las bases SQL en la nube.',['PowerShell']],
  monitor:['data','Monitor de servidores','Vigila servicios y recursos de los servidores.',['PowerShell']],
- bi:['dec','Carrousel BI','Tablero de Power BI para la dirección: ventas, finanzas, balance, máquinas, inventario y personal, con semáforos y glosario.',['Power BI','DAX']],
+ bi:['dec','BI corporativo','Tablero de Power BI para la dirección: ventas, finanzas, balance, máquinas, inventario y personal, con semáforos y glosario.',['Power BI','DAX']],
  ventas:['dec','Dashboard de Ventas','Web en Windows Server con ventas, inventario por bodega, rendimientos y reportes por correo.',['ASP.NET Core','C#']],
  rrhh:['dec','Dashboard RRHH','Indicadores de personal.',['HTML','JavaScript']]
 };
@@ -496,16 +496,16 @@ $('#eco').addEventListener('click',e=>{
 
 /* Proyectos */
 const P=[
- {id:'helpdesk',t:'Helpdesk Carrousel',k:'Service desk · v2.4',a:'Web',v:'Empresa',d:'Mesa de servicio interna con ITSM, SLA y trazabilidad completa de cada caso.',
+ {id:'helpdesk',t:'Mesa de servicio (Helpdesk)',k:'Service desk · v2.4',a:'Web',v:'Empresa',d:'Mesa de servicio interna con ITSM, SLA y trazabilidad completa de cada caso.',
   long:'La mesa de servicio de toda la corporación. Reemplazó una versión anterior y hoy pasa una validación técnica de preproducción que revisa esquema, rutas, estilos y exportaciones antes de salir a producción.',
   f:['Acceso por OTP, roles, permisos y auditoría','Clasificación ITSM, prioridad, SLA y estados','Conversación pública e interna con adjuntos','Confirmación del solicitante, reapertura y encuestas','Agenda y visitas técnicas ligadas a tickets','43 tablas en un esquema limpio y versionado'],s:['PHP','MariaDB','JavaScript','XLSX']},
- {id:'bi',t:'Carrousel BI',k:'Business Intelligence',a:'Datos',v:'Empresa',d:'Tablero de Power BI para el dueño, sobre un almacén que une todas las fuentes.',
+ {id:'bi',t:'BI corporativo',k:'Business Intelligence',a:'Datos',v:'Empresa',d:'Tablero de Power BI para la dirección, sobre un almacén que une todas las fuentes.',
   long:'Reúne ventas, finanzas, máquinas, inventario y personal en un solo proyecto. Cada tarjeta lleva un semáforo y una explicación corta, y un glosario explica cómo se calcula cada indicador.',
   f:['11 páginas: resumen, ventas, estado de resultados, balance, compras, máquinas, inventario y personal','Almacén analítico separado: no toca las bases operativas','Une punto de venta, SAP, RRHH y las apps internas','Scripts que verifican las cifras de DAX'],s:['Power BI','DAX','SQL Server','Python']},
- {id:'indicadores',t:'Indicadores Carrousel',k:'Gestión por resultados',a:'Web',v:'Empresa',d:'Metas y resultados de los Planes de Acción 2027, con aprobación y reporte para nóminas.',
+ {id:'indicadores',t:'Indicadores de gestión',k:'Gestión por resultados',a:'Web',v:'Empresa',d:'Metas y resultados de los planes anuales, con aprobación y reporte para nóminas.',
   long:'Muestra a cada persona sus metas y le permite capturar resultados con evidencia. Los jefes aprueban, con o sin pago, y la nómina recibe un reporte listo.',
-  f:['86 KPIs y 34 hojas de ruta cargados del plan 2027','Aprobación con o sin pago y reajustes de meta','Tablero por rol: administración, gerencia y supervisión','Usuarios importados desde Caja Chica'],s:['PHP','MariaDB','Chart.js']},
- {id:'app',t:'Carrousel App',k:'App móvil + API',a:'Móvil',v:'Público',url:'https://github.com/FernandoZL/carrousel-app',d:'App Android para clientes con cupones QR y canje único en toda la red.',
+  f:['KPIs y hojas de ruta separados, cargados desde el plan anual','Aprobación con o sin pago y reajustes de meta','Tablero por rol: administración, gerencia y supervisión','Usuarios importados desde Caja Chica'],s:['PHP','MariaDB','Chart.js']},
+ {id:'app',t:'App de clientes',k:'App móvil + API',a:'Móvil',v:'Empresa',d:'App Android para clientes con cupones QR y canje único en toda la red.',
   long:'Los clientes entran con su correo y un código, sin contraseña. Ven el cupón de cumpleaños de cada festejado con QR, obtienen ofertas y consultan parques. El personal canjea desde un panel web.',
   f:['Acceso sin contraseña con código de 6 dígitos','Cupones con QR y canje único en toda la red','Panel web para cajeros y administración','35 pruebas de punta a punta contra una base de prueba'],s:['Kotlin','Jetpack Compose','PHP','MariaDB']},
  {id:'neuronas',t:'Neuronas para Obsidian',k:'Herramienta propia · v5.4',a:'Herramientas',v:'Público',url:'https://github.com/FernandoZL/obsidian',d:'Memoria compartida entre asistentes de IA dentro de una bóveda de Obsidian.',
