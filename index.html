@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Fernando Zuñiga Lemus">
+<meta property="og:description" content="Sistemas internos, datos y automatización en Guatemala.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%237390ff%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Arial%22 font-weight=%22900%22 font-size=%2228%22 text-anchor=%22middle%22 fill=%22%230b0f1a%22%3EFZ%3C/text%3E%3C/svg%3E">
+<title>Fernando Zuñiga Lemus</title>
+<meta name="description" content="Portafolio de Fernando Zuñiga Lemus: sistemas internos, datos y automatización en Guatemala.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: oscuro primero. Cabecera con red viva del ecosistema (canvas), grilla bento, mapa interactivo de 3 columnas, proyectos filtrables con panel lateral y trayectoria. */
+:root{
+  --bg:#0b0f1a; --surface:#121827; --surface-2:#182036; --line:#242d47;
+  --ink:#eef1f8; --muted:#97a1bb; --accent:#7390ff; --accent-ink:#0b0f1a;
+  --warm:#f5a742; --jade:#3ccfa0; --glow:rgba(115,144,255,.16);
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --r:14px; --wrap:1280px; color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eef1f8; --line:#dce1ee;
+  --ink:#10162a; --muted:#596279; --accent:#2347d8; --accent-ink:#ffffff;
+  --warm:#b4600a; --jade:#0d8a64; --glow:rgba(35,71,216,.10); color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eef1f8; --line:#dce1ee;
+  --ink:#10162a; --muted:#596279; --accent:#2347d8; --accent-ink:#ffffff;
+  --warm:#b4600a; --jade:#0d8a64; --glow:rgba(35,71,216,.10); color-scheme:light}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+.wrap{max-width:var(--wrap);margin-inline:auto}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Barra superior */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline:max(16px, env(safe-area-inset-left, 0px));background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:600}
+.mono{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-family:var(--f-display);font-weight:800;font-size:15px;letter-spacing:-.03em}
+.bar nav{display:flex;gap:4px}
+.bar nav a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px;transition:color .2s,background .2s}
+.bar nav a:hover{color:var(--ink)}
+.bar nav a.on{color:var(--ink);background:var(--surface-2)}
+.iconbtn{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+.iconbtn:hover{border-color:var(--accent)}
+.iconbtn svg{width:18px;height:18px}
+
+/* Hero con red */
+.hero{position:relative;padding-block:72px 64px;min-height:560px;display:flex;align-items:center}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-in{position:relative;z-index:1;max-width:780px;pointer-events:none}
+.hero-in a,.hero-in button{pointer-events:auto}
+.status{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 0 var(--jade);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--jade) 60%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(46px,8vw,104px);font-weight:800;letter-spacing:-.035em;margin-top:22px}
+.hero h1 .ln2{color:var(--muted);font-weight:400}
+.typed{font-family:var(--f-display);font-size:clamp(22px,2.6vw,32px);font-weight:600;margin-top:20px;min-height:1.3em}
+.typed .word{color:var(--accent)}
+.typed .caret{display:inline-block;width:3px;height:.9em;background:var(--warm);margin-left:4px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .intro{color:var(--muted);font-size:18px;max-width:58ch;margin-top:16px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface);transition:transform .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.hint{position:absolute;right:0;bottom:24px;z-index:1;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+/* Spotlight compartido */
+.spot{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 60%)}
+.spot:hover::before{opacity:1}
+
+/* Bento */
+section{padding-block:72px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 32px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.025em}
+.sec-head p{color:var(--muted);max-width:56ch}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(150px,auto);gap:14px}
+.cell{padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.c-about{grid-column:span 2;grid-row:span 2}
+.c-about p{color:var(--muted);font-size:16px}
+.c-about h3{font-size:26px}
+.c-clock .t{font-family:var(--f-display);font-size:40px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.c-clock small,.c-stat small{color:var(--muted);font-size:14px}
+.c-stat b{font-family:var(--f-display);font-size:48px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.c-stat b em{font-style:normal;color:var(--accent)}
+.c-now{grid-column:span 2}
+.c-now ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.c-now li{display:flex;justify-content:space-between;gap:12px;font-size:15px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.c-now li span{color:var(--muted);font-family:var(--f-mono);font-size:12px;white-space:nowrap}
+.c-stack{grid-column:span 4;padding:18px 0;gap:12px}
+.c-stack .label{padding-inline:22px}
+.marquee{display:flex;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:10px;padding-right:10px;flex-shrink:0;animation:slide 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-100%)}}
+.chip{font-family:var(--f-mono);font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;white-space:nowrap;color:var(--ink);background:var(--surface-2)}
+
+/* Ecosistema */
+.eco{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px}
+.col{padding:20px;min-width:0}
+.col h3{font-size:18px;margin:6px 0 14px}
+.nodes{display:flex;flex-wrap:wrap;gap:8px}
+.node{padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);font-size:14px;transition:opacity .25s,border-color .25s,background .25s,transform .2s}
+.node:hover{transform:translateY(-1px);border-color:var(--accent)}
+.node[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.node.lit{border-color:var(--warm);color:var(--ink)}
+.eco.sel .node:not(.lit):not([aria-pressed="true"]){opacity:.32}
+.info{margin-top:14px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;padding:22px;min-height:118px}
+.info h3{font-size:22px}
+.info p{color:var(--muted);margin-top:6px}
+.info .links{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
+.info .links .label{width:100%}
+.shared{margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.shared div{padding:18px}
+.shared b{display:block;font-size:15px;margin-bottom:2px}
+.shared span{color:var(--muted);font-size:14px}
+
+/* Proyectos */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center}
+.filters button{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters .clear{border-style:dashed;color:var(--warm)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{padding:22px;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card h3{font-size:22px}
+.card p{color:var(--muted);font-size:15px}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.tag{font-family:var(--f-mono);font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:transparent}
+button.tag:hover,.tag.on{border-color:var(--warm);color:var(--warm)}
+.pill{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--warm) 16%,transparent);color:var(--warm)}
+.pill.pub{background:color-mix(in srgb,var(--jade) 16%,transparent);color:var(--jade)}
+.card .open{font-size:14px;font-weight:600;color:var(--accent)}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted)}
+
+/* Panel lateral */
+.scrim{position:fixed;inset:0;background:rgba(5,8,15,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(520px,100%);background:var(--surface);border-left:1px solid var(--line);
+  padding:calc(env(safe-area-inset-top,0px) + 24px) max(24px, env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) 24px;
+  overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.drawer.show{transform:none;visibility:visible}
+.drawer .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);right:max(18px, env(safe-area-inset-right,0px))}
+.drawer h3{font-size:32px;margin:10px 0 12px;padding-right:48px}
+.drawer p{color:var(--muted)}
+.drawer h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px;font-weight:500}
+.drawer ul.feat{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.drawer ul.feat li{padding-left:22px;position:relative}
+.drawer ul.feat li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.drawer .tags{display:flex;flex-wrap:wrap;gap:6px}
+
+/* Trayectoria */
+.two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{position:relative;padding-left:36px}
+.tl li::before{content:"";position:absolute;left:0;top:22px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--line)}
+.tl li.now::before{border-color:var(--accent);background:var(--accent)}
+.tl button{width:100%;text-align:left;background:none;border:0;padding:16px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;border-bottom:1px solid var(--line)}
+.tl b{font-size:17px}
+.tl time{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.tl .org{color:var(--muted);font-size:14px;grid-column:1/-1}
+.tl .more{grid-column:1/-1;color:var(--muted);font-size:15px;max-height:0;overflow:hidden;transition:max-height .35s ease,margin .35s}
+.tl li.open .more{max-height:160px;margin-top:6px}
+.tl li.now b{color:var(--accent)}
+.side{padding:22px}
+.side + .side{margin-top:14px}
+.side h3{font-size:19px;margin-bottom:12px}
+.side ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.side li span{display:block;color:var(--muted);font-size:14px}
+
+/* Carta y contacto */
+.letter{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start}
+.letter blockquote{margin:0;font-family:var(--f-display);font-size:clamp(26px,3.2vw,40px);font-weight:600;line-height:1.2;letter-spacing:-.015em}
+.letter blockquote em{font-style:normal;color:var(--warm)}
+.letter .body{display:grid;gap:14px;color:var(--muted);font-size:17px}
+.letter .sign{color:var(--ink);font-family:var(--f-display);font-size:22px;font-weight:600}
+.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+.ct{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.ct b{display:block;font-size:18px;margin-top:2px}
+.ct .arrow{font-size:22px;color:var(--muted);transition:transform .25s,color .25s}
+.ct:hover .arrow{transform:translate(3px,-3px);color:var(--accent)}
+footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (max-width:1050px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c-stack{grid-column:span 2}
+  .eco{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shared{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two,.letter{grid-template-columns:1fr}
+  .bar nav{display:none}
+}
+@media (max-width:640px){
+  .hero{padding-block:48px;min-height:0}
+  .hint{display:none}
+  .bento{grid-template-columns:1fr}
+  .c-about,.c-now,.c-stack{grid-column:auto;grid-row:auto}
+  .grid,.contact,.shared,.info{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><span class="mono">FZ</span><span>Fernando Zuñiga</span></a>
+    <nav aria-label="Secciones">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#ecosistema">Ecosistema</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="iconbtn" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero" id="inicio">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="hero-in">
+      <span class="status"><span class="dot"></span>Villa Nueva, Guatemala · abierto a nuevos retos</span>
+      <h1>Fernando<br><span class="ln2">Zuñiga Lemus</span></h1>
+      <p class="typed" aria-live="polite">Construyo <span class="word" id="word">sistemas internos</span><span class="caret" aria-hidden="true"></span></p>
+      <p class="intro">Convierto procesos manuales en software que la gente usa todos los días: aplicaciones de gestión, tableros de datos y automatizaciones, con acceso seguro, trazabilidad y documentación.</p>
+      <div class="cta">
+        <a class="btn primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn" href="https://github.com/FernandoZL" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <span class="hint">Mueve el mouse sobre la red ↗</span>
+  </div>
+
+  <section id="sobre-mi">
+    <div class="sec-head">
+      <h2>Sobre mí</h2>
+      <p>Estudiante de Ingeniería en Sistemas en la UMG, con más de diez años de experiencia laboral antes y durante la carrera.</p>
+    </div>
+    <div class="bento">
+      <div class="cell spot c-about">
+        <span class="label">Quién soy</span>
+        <h3>Primero entiendo el proceso. Después escribo el software.</h3>
+        <p>Trabajé años en exportaciones, importaciones y mejora continua. Ahí aprendí cómo se mueve una operación por dentro y dónde se pierden las horas.</p>
+        <p>Hoy desarrollo el ecosistema de aplicaciones de Corporación Carrousel: mesa de servicio, caja chica, compras, indicadores, control de TI y los tableros con los que la dirección toma decisiones.</p>
+        <p>Soy autodidacta y ordenado. Documento lo que construyo, pruebo antes de publicar y cuido que otra persona pueda mantenerlo.</p>
+      </div>
+      <div class="cell spot c-clock">
+        <span class="label">Hora en Guatemala</span>
+        <span class="t" id="clock">--:--</span>
+        <small id="clockday">GMT−6</small>
+      </div>
+      <div class="cell spot c-stat">
+        <span class="label">GitHub</span>
+        <b>50<em>+</em></b>
+        <small>repositorios con código propio</small>
+      </div>
+      <div class="cell spot c-stat">
+        <span class="label">Carrousel</span>
+        <b>25<em>+</em></b>
+        <small>sistemas, scripts y tableros</small>
+      </div>
+      <div class="cell spot c-stat">
+        <span class="label">Experiencia</span>
+        <b>10<em>+</em></b>
+        <small>años trabajando</small>
+      </div>
+      <div class="cell spot c-now">
+        <span class="label">En qué estoy trabajando</span>
+        <ul>
+          <li>Indicadores: metas y resultados de los Planes 2027<span>v0.9</span></li>
+          <li>Diseño compartido del ecosistema<span>v1.7</span></li>
+          <li>Helpdesk rumbo a producción<span>v2.4</span></li>
+          <li>Neuronas: memoria compartida para asistentes de IA<span>v5.4</span></li>
+        </ul>
+      </div>
+      <div class="cell spot c-stack">
+        <span class="label">Herramientas que uso</span>
+        <div class="marquee" id="marquee"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecosistema">
+    <div class="sec-head">
+      <h2>El Ecosistema Carrousel</h2>
+      <p>Toca cualquier pieza para ver qué hace y con qué se conecta. Todas comparten acceso, diseño y consola de mantenimiento.</p>
+    </div>
+    <div class="eco" id="eco">
+      <div class="col spot"><span class="label">1 · Operación</span><h3>Apps que usa el personal</h3><div class="nodes" data-col="ops"></div></div>
+      <div class="col spot"><span class="label">2 · Datos</span><h3>Integración y respaldo</h3><div class="nodes" data-col="data"></div></div>
+      <div class="col spot"><span class="label">3 · Decisión</span><h3>Tableros</h3><div class="nodes" data-col="dec"></div></div>
+    </div>
+    <div class="info spot" id="info" aria-live="polite">
+      <div><span class="label" id="info-col">Selecciona una pieza</span><h3 id="info-t">Un ecosistema, tres capas</h3><p id="info-d">Las apps registran la operación, la capa de datos la integra y respalda, y los tableros la convierten en decisiones.</p></div>
+      <div class="links" id="info-l"><span class="label">Tecnología</span><span class="tag">PHP 8.2</span><span class="tag">MariaDB</span><span class="tag">SQL Server</span><span class="tag">C#</span><span class="tag">Power BI</span></div>
+    </div>
+    <div class="shared">
+      <div class="spot"><b>Acceso por OTP</b><span>Código al correo, roles, permisos y auditoría.</span></div>
+      <div class="spot"><b>Diseño compartido</b><span>Una hoja de estilos versionada para todas las apps.</span></div>
+      <div class="spot"><b>Consola MAIN.bat</b><span>Validar, respaldar, actualizar y publicar sin comandos.</span></div>
+      <div class="spot"><b>Documentado</b><span>Manuales, historial de cambios y pruebas en cada repositorio.</span></div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="sec-head">
+      <h2>Proyectos</h2>
+      <p>Filtra por área o toca una tecnología. Abre cualquier tarjeta para ver el detalle. Los proyectos de empresa son privados y puedo mostrarlos en una entrevista.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar proyectos"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="trayectoria">
+    <div class="sec-head">
+      <h2>Trayectoria</h2>
+      <p>De la logística de exportación a la mejora continua, y de ahí al desarrollo. Toca cada etapa para ver más.</p>
+    </div>
+    <div class="two">
+      <ol class="tl" id="tl">
+        <li class="now open"><button type="button" aria-expanded="true"><b>Desarrollo de sistemas internos</b><time>Actualidad</time><span class="org">Corporación Carrousel</span><span class="more">Diseño, desarrollo y mantenimiento de más de 25 aplicaciones, integraciones y tableros: PHP, Laravel, C#, Kotlin, Apps Script, SQL Server y Power BI, en Windows Server.</span></button></li>
+        <li><button type="button" aria-expanded="false"><b>Analista de Mejora Continua</b><time>Oct 2023</time><span class="org">Suministros y Alimentos S.A. · Mixco</span><span class="more">Análisis de procesos y reportes, automatización con Power Automate, UiPath y Python, y tableros en Power BI.</span></button></li>
+        <li><button type="button" aria-expanded="false"><b>Asistente de Importaciones y Exportaciones</b><time>2022 – 2023</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Gestión de embarques, documentación aduanera y control en SAP y Excel.</span></button></li>
+        <li><button type="button" aria-expanded="false"><b>Auxiliar de Importaciones y Exportaciones</b><time>2020 – 2022</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Seguimiento de importaciones y exportaciones y registro de operaciones.</span></button></li>
+        <li><button type="button" aria-expanded="false"><b>Asistente de Exportaciones</b><time>2014 – 2019</time><span class="org">Transmercasa · Wavin Amanco</span><span class="more">Cinco años en comercio exterior, desde la práctica hasta la gestión de exportaciones a Centroamérica.</span></button></li>
+      </ol>
+      <div>
+        <div class="side spot">
+          <h3>Formación</h3>
+          <ul>
+            <li>Ingeniería en Sistemas de Información y Ciencias de la Computación<span>Universidad Mariano Gálvez · Villa Nueva</span></li>
+            <li>Bachillerato en Computación con Orientación Comercial<span>José Milla y Vidaurre · 2013</span></li>
+            <li>Operador de Computadoras<span>INTECAP · 2013</span></li>
+          </ul>
+        </div>
+        <div class="side spot">
+          <h3>Cursos e idiomas</h3>
+          <ul>
+            <li>Power BI Essentials<span>2023</span></li>
+            <li>Excel básico, intermedio y avanzado<span>2022 – 2023</span></li>
+            <li>Español nativo · Inglés intermedio<span>Idiomas</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="letter">
+      <blockquote>Me gusta encontrar el paso manual que le quita horas a un equipo y convertirlo en una herramienta que <em>funcione todos los días</em>.</blockquote>
+      <div class="body">
+        <p>Busco un equipo donde aportar en desarrollo, datos o automatización, y seguir creciendo como ingeniero.</p>
+        <p>Traigo algo poco común en un desarrollador: años del lado del usuario, en logística y mejora continua. Por eso pregunto cómo se trabaja antes de proponer cómo debería funcionar el sistema.</p>
+        <p class="sign">Fernando Zuñiga Lemus</p>
+      </div>
+    </div>
+    <div class="contact">
+      <a class="ct spot" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener"><span><span class="label">LinkedIn</span><b>in/fernandozl</b></span><span class="arrow">↗</span></a>
+      <a class="ct spot" href="https://github.com/FernandoZL" target="_blank" rel="noopener"><span><span class="label">GitHub</span><b>@FernandoZL</b></span><span class="arrow">↗</span></a>
+      <div class="ct spot"><span><span class="label">Ubicación</span><b>Villa Nueva, Guatemala</b></span><span class="arrow">◎</span></div>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Fernando Zuñiga Lemus</span><span>Hecho a mano con HTML, CSS y JavaScript</span></footer>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title">
+  <button class="iconbtn x" id="d-close" type="button" aria-label="Cerrar detalle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <div id="d-body"></div>
+</aside>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Tema */
+const root=document.documentElement;
+try{const t=localStorage.getItem('fz-theme'); if(t) root.dataset.theme=t;}catch(e){}
+$('#theme').addEventListener('click',()=>{
+  const dark=root.dataset.theme? root.dataset.theme==='dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+  root.dataset.theme=dark?'light':'dark';
+  try{localStorage.setItem('fz-theme',root.dataset.theme);}catch(e){}
+});
+
+/* Palabra que cambia */
+const words=['sistemas internos','tableros de datos','automatizaciones','apps móviles','herramientas que se usan a diario'];
+const w=$('#word'); let wi=0;
+if(!reduce){
+  const type=(txt,i=0)=>{w.textContent=txt.slice(0,i); if(i<txt.length) setTimeout(()=>type(txt,i+1),55); else setTimeout(erase,2200);};
+  const erase=()=>{const t=w.textContent; if(t.length){w.textContent=t.slice(0,-1); setTimeout(erase,28);} else {wi=(wi+1)%words.length; type(words[wi]);}};
+  setTimeout(erase,2400);
+}
+
+/* Reloj de Guatemala */
+const fmtT=new Intl.DateTimeFormat('es-GT',{timeZone:'America/Guatemala',hour:'2-digit',minute:'2-digit',hour12:false});
+const fmtD=new Intl.DateTimeFormat('es-GT',{timeZone:'America/Guatemala',weekday:'long',day:'numeric',month:'long'});
+const tick=()=>{const d=new Date(); $('#clock').textContent=fmtT.format(d); $('#clockday').textContent=fmtD.format(d)+' · GMT−6';};
+tick(); setInterval(tick,15000);
+
+/* Marquesina */
+const stack=['PHP 8','Laravel','MariaDB','SQL Server','C# · .NET','Kotlin','Jetpack Compose','Java','Python','JavaScript','Power BI','DAX','Apps Script','PowerShell','Git','GitHub Actions','Windows Server','UiPath','Power Automate','SAP','Excel avanzado','Node.js','MCP'];
+const mk=()=>{const t=document.createElement('div');t.className='track';stack.forEach(s=>{const c=document.createElement('span');c.className='chip';c.textContent=s;t.appendChild(c)});return t;};
+$('#marquee').append(mk(),mk()); $$('#marquee .track')[1].setAttribute('aria-hidden','true');
+
+/* Spotlight */
+document.addEventListener('pointermove',e=>{
+  const el=e.target.closest&&e.target.closest('.spot'); if(!el) return;
+  const r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px');
+});
+
+/* Ecosistema */
+const N={
+ helpdesk:['ops','Helpdesk','Mesa de servicio con clasificación ITSM, prioridades y SLA, conversación interna y pública, adjuntos, reapertura y encuestas.',['PHP','MariaDB','OTP']],
+ caja:['ops','Caja Chica','Fondos de caja chica con liquidaciones, comprobantes y aprobaciones por rol.',['PHP','MariaDB']],
+ compras:['ops','Compras','Solicitudes clasificadas según la política de compras, cotizaciones, PDF y aviso por correo.',['PHP','Dompdf','PHPMailer']],
+ controlit:['ops','Control IT','Inventario de TI, servidores, respaldos, evidencias y cartas de entrega.',['PHP','MariaDB']],
+ indicadores:['ops','Indicadores','Metas y resultados de los Planes de Acción 2027, con aprobación, reajustes y reporte para nóminas.',['PHP','Chart.js']],
+ vehiculos:['ops','Control de Vehículos','Control de la flota con panel web y vista móvil.',['Laravel','Tailwind']],
+ documentos:['ops','Control de Documentos','Registro y seguimiento de documentos de la empresa.',['PHP','MariaDB']],
+ tickets:['ops','Tickets de Destrucción','Registro y seguimiento de los tickets de destrucción.',['PHP','MariaDB']],
+ rendimientos:['ops','Rendimientos de Máquinas','Rendimiento por parque y por máquina con datos del punto de venta, exportable a Excel.',['PHP','CSV','Excel']],
+ payout:['ops','PayOut','Control de PayOut en los parques.',['PHP','JavaScript']],
+ cumple:['ops','Campañas de cumpleaños','Regalos de cumpleaños por correo con un solo canje en toda la red de parques.',['PHP','SMTP']],
+ tuvoz:['ops','Tu Voz','Canal para que el personal envíe sus comentarios.',['PHP']],
+ directorio:['ops','Directorio','Directorio interno de contactos.',['PHP']],
+ jornadas:['ops','Control de Jornadas','Registro de jornadas del personal.',['PHP']],
+ portal:['ops','Portal de Sistemas','Entrada única a todas las aplicaciones del ecosistema.',['HTML','CSS']],
+ sql:['data','SQL Server','Punto de venta (Semnox), SAP y RRHH: las fuentes de la empresa.',['SQL Server']],
+ almacen:['data','Almacén CARROUSEL_BI','Almacén analítico separado. Copia los datos sin tocar las bases operativas ni importar datos personales.',['SQL Server','ETL']],
+ etl:['data','ETL de rendimientos','Prepara los datos de máquinas para los reportes.',['Batch','SQL']],
+ export:['data','Exportadores','Ventas y RRHH desde SQL Server hacia los tableros.',['C#','.NET']],
+ backup:['data','Respaldo a Google Drive','Respaldo automático de las bases SQL en la nube.',['PowerShell']],
+ monitor:['data','Monitor de servidores','Vigila servicios y recursos de los servidores.',['PowerShell']],
+ bi:['dec','Carrousel BI','Tablero de Power BI para la dirección: ventas, finanzas, balance, máquinas, inventario y personal, con semáforos y glosario.',['Power BI','DAX']],
+ ventas:['dec','Dashboard de Ventas','Web en Windows Server con ventas, inventario por bodega, rendimientos y reportes por correo.',['ASP.NET Core','C#']],
+ rrhh:['dec','Dashboard RRHH','Indicadores de personal.',['HTML','JavaScript']]
+};
+const E=[];
+['helpdesk','caja','compras','controlit','indicadores','vehiculos','documentos','tickets','rendimientos','payout','cumple','tuvoz','jornadas'].forEach(a=>E.push([a,'almacen']));
+E.push(['rendimientos','etl'],['payout','etl'],['sql','almacen'],['sql','export'],['sql','etl'],['sql','backup'],['monitor','sql'],['portal','helpdesk'],['portal','caja'],['portal','directorio'],
+  ['almacen','bi'],['export','ventas'],['export','rrhh'],['etl','ventas'],['etl','bi']);
+const nb=id=>E.flatMap(([a,b])=>a===id?[b]:b===id?[a]:[]);
+const colName={ops:'Operación',data:'Datos',dec:'Decisión'};
+Object.entries(N).forEach(([id,[col,name]])=>{
+  const b=document.createElement('button'); b.type='button'; b.className='node'; b.textContent=name; b.dataset.id=id; b.setAttribute('aria-pressed','false');
+  document.querySelector(`.nodes[data-col="${col}"]`).appendChild(b);
+});
+let sel=null;
+$('#eco').addEventListener('click',e=>{
+  const b=e.target.closest('.node'); if(!b) return;
+  const id=b.dataset.id; sel = sel===id? null : id;
+  $$('.node').forEach(n=>{n.setAttribute('aria-pressed',n.dataset.id===sel);n.classList.remove('lit')});
+  $('#eco').classList.toggle('sel',!!sel);
+  if(!sel) return;
+  const lit=new Set(nb(sel));
+  [...lit].forEach(x=>{ if(N[x][0]==='data') nb(x).forEach(y=>{ if(N[y][0]!==N[sel][0] && N[y][0]!=='data') lit.add(y); }); });
+  lit.delete(sel);
+  lit.forEach(x=>document.querySelector(`.node[data-id="${x}"]`).classList.add('lit'));
+  const [col,name,desc,tech]=N[sel];
+  $('#info-col').textContent=colName[col]; $('#info-t').textContent=name; $('#info-d').textContent=desc;
+  const L=$('#info-l'); L.innerHTML='<span class="label">Tecnología · conecta con '+lit.size+'</span>';
+  tech.forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;L.appendChild(s)});
+});
+
+/* Proyectos */
+const P=[
+ {id:'helpdesk',t:'Helpdesk Carrousel',k:'Service desk · v2.4',a:'Web',v:'Empresa',d:'Mesa de servicio interna con ITSM, SLA y trazabilidad completa de cada caso.',
+  long:'La mesa de servicio de toda la corporación. Reemplazó una versión anterior y hoy pasa una validación técnica de preproducción que revisa esquema, rutas, estilos y exportaciones antes de salir a producción.',
+  f:['Acceso por OTP, roles, permisos y auditoría','Clasificación ITSM, prioridad, SLA y estados','Conversación pública e interna con adjuntos','Confirmación del solicitante, reapertura y encuestas','Agenda y visitas técnicas ligadas a tickets','43 tablas en un esquema limpio y versionado'],s:['PHP','MariaDB','JavaScript','XLSX']},
+ {id:'bi',t:'Carrousel BI',k:'Business Intelligence',a:'Datos',v:'Empresa',d:'Tablero de Power BI para el dueño, sobre un almacén que une todas las fuentes.',
+  long:'Reúne ventas, finanzas, máquinas, inventario y personal en un solo proyecto. Cada tarjeta lleva un semáforo y una explicación corta, y un glosario explica cómo se calcula cada indicador.',
+  f:['11 páginas: resumen, ventas, estado de resultados, balance, compras, máquinas, inventario y personal','Almacén analítico separado: no toca las bases operativas','Une punto de venta, SAP, RRHH y las apps internas','Scripts que verifican las cifras de DAX'],s:['Power BI','DAX','SQL Server','Python']},
+ {id:'indicadores',t:'Indicadores Carrousel',k:'Gestión por resultados',a:'Web',v:'Empresa',d:'Metas y resultados de los Planes de Acción 2027, con aprobación y reporte para nóminas.',
+  long:'Muestra a cada persona sus metas y le permite capturar resultados con evidencia. Los jefes aprueban, con o sin pago, y la nómina recibe un reporte listo.',
+  f:['86 KPIs y 34 hojas de ruta cargados del plan 2027','Aprobación con o sin pago y reajustes de meta','Tablero por rol: administración, gerencia y supervisión','Usuarios importados desde Caja Chica'],s:['PHP','MariaDB','Chart.js']},
+ {id:'app',t:'Carrousel App',k:'App móvil + API',a:'Móvil',v:'Público',url:'https://github.com/FernandoZL/carrousel-app',d:'App Android para clientes con cupones QR y canje único en toda la red.',
+  long:'Los clientes entran con su correo y un código, sin contraseña. Ven el cupón de cumpleaños de cada festejado con QR, obtienen ofertas y consultan parques. El personal canjea desde un panel web.',
+  f:['Acceso sin contraseña con código de 6 dígitos','Cupones con QR y canje único en toda la red','Panel web para cajeros y administración','35 pruebas de punta a punta contra una base de prueba'],s:['Kotlin','Jetpack Compose','PHP','MariaDB']},
+ {id:'neuronas',t:'Neuronas para Obsidian',k:'Herramienta propia · v5.4',a:'Herramientas',v:'Público',url:'https://github.com/FernandoZL/obsidian',d:'Memoria compartida entre asistentes de IA dentro de una bóveda de Obsidian.',
+  long:'Un plugin y un servidor MCP que conectan notas, proyectos, tareas y recuerdos. Las notas quedan en Markdown, así que siempre son tuyas y se pueden editar.',
+  f:['Memoria compartida entre varias consolas de IA','Plugin para Windows, macOS, Linux, iOS y Android','Sincronización con iCloud en Linux','Publicación automática con GitHub Actions'],s:['JavaScript','Node.js','MCP','Obsidian']},
+ {id:'ventas',t:'Dashboard de Ventas',k:'Web · .NET 6',a:'Datos',v:'Empresa',d:'Ventas, inventario y rendimientos en la web, con reportes automáticos por correo.',
+  long:'Tablero web en Windows Server con un servicio en segundo plano que prepara la caché de datos. Se instala y mantiene con tres archivos .bat.',
+  f:['Ventas, inventario por bodega y rendimientos','Servicio en segundo plano para la caché','Reportes programados por correo','Instalación y reparación con un clic'],s:['ASP.NET Core','C#','SQL Server']},
+ {id:'cumple',t:'Campañas de cumpleaños',k:'Marketing · v1.0',a:'Web',v:'Empresa',d:'Regalos de cumpleaños por correo con un único canje en toda la red de parques.',
+  long:'Registra clientes, envía su regalo por correo y controla que se canjee una sola vez en cualquier parque.',
+  f:['Registro de clientes y campañas','Envío de cupones por correo','Canje central por parque','Consola de mantenimiento con respaldo y prueba SMTP'],s:['PHP','MariaDB','SMTP']},
+ {id:'compras',t:'Compras',k:'Procesos',a:'Web',v:'Empresa',d:'Solicitudes de compra clasificadas automáticamente según la política.',
+  long:'El solicitante llena un formulario sin iniciar sesión. El comprador gestiona estados, cotizaciones y evidencias, y todos reciben aviso por correo.',
+  f:['Clasificación automática según la política de compras','Cotizaciones de proveedores y seguimiento de estados','PDF de la solicitud','Manuales por pantalla'],s:['PHP','Dompdf','PHPMailer']},
+ {id:'rendimientos',t:'Rendimientos de Máquinas',k:'Analítica · R34',a:'Datos',v:'Empresa',d:'Rendimiento por parque y por máquina con datos del punto de venta.',
+  long:'Compara parques y máquinas con créditos, jugadas, tickets y valor generado. Más de 30 versiones publicadas con historial detallado.',
+  f:['Rendimiento general y por parque','Fuentes Semnox y PayOut, solas o combinadas','Caché que se invalida al cambiar la fuente','Exportación completa a Excel'],s:['PHP','CSV','Excel']},
+ {id:'zona',t:'Zona 502 TV',k:'Android TV',a:'Móvil',v:'Personal',d:'App nativa para celular y Android TV, manejable con control remoto.',
+  long:'Proyecto personal publicado como APK firmado, con interfaz pensada para pantallas grandes y control remoto.',
+  f:['Celular Android 8.0+ y Android TV / Google TV','Navegación con control remoto','APK firmado en releases'],s:['Kotlin','Android TV']},
+ {id:'citas',t:'Sistema de Citas Médicas',k:'Universidad · Programación II',a:'Web',v:'Académico',d:'Proyecto final: pacientes, médicos, citas, recetas e historial médico.',
+  long:'Proyecto final del curso de Programación II en la Universidad Mariano Gálvez.',
+  f:['Usuarios, pacientes y médicos','Citas, consultas y recetas','Historial médico y reportes'],s:['Java','POO','JDBC']},
+ {id:'votacion',t:'Votación de disfraces',k:'Evento interno',a:'Automatización',v:'Empresa',d:'Votación pública del mejor disfraz, hecha en Google Apps Script.',
+  long:'Una web app rápida para un evento de la corporación, sin servidor propio.',
+  f:['Votación pública desde el celular','Resultados en Google Sheets','Publicada como Web App'],s:['Apps Script','Google Sheets']}
+];
+const areas=['Todos','Web','Datos','Móvil','Automatización','Herramientas'];
+let area='Todos', tech=null;
+const F=$('#filters');
+function drawFilters(){
+  F.innerHTML='';
+  areas.forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.setAttribute('aria-pressed',a===area);b.onclick=()=>{area=a;draw()};F.appendChild(b)});
+  if(tech){const c=document.createElement('button');c.type='button';c.className='clear';c.textContent='× '+tech;c.setAttribute('aria-label','Quitar filtro '+tech);c.onclick=()=>{tech=null;draw()};F.appendChild(c)}
+}
+function draw(){
+  drawFilters();
+  const G=$('#grid'); G.innerHTML='';
+  const list=P.filter(p=>(area==='Todos'||p.a===area)&&(!tech||p.s.includes(tech)));
+  if(!list.length){G.innerHTML='<p class="empty">No hay proyectos con ese filtro.</p>';return}
+  list.forEach(p=>{
+    const c=document.createElement('article'); c.className='card spot'; c.tabIndex=0; c.setAttribute('role','button'); c.setAttribute('aria-label','Ver detalle de '+p.t);
+    c.innerHTML=`<div class="top"><span class="label">${p.k}</span><span class="pill ${p.v==='Público'?'pub':''}">${p.v}</span></div><h3>${p.t}</h3><p>${p.d}</p><div class="tags"></div><span class="open">Ver detalle →</span>`;
+    const T=c.querySelector('.tags');
+    p.s.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='tag'+(s===tech?' on':'');b.textContent=s;b.onclick=e=>{e.stopPropagation();tech=tech===s?null:s;area='Todos';draw()};T.appendChild(b)});
+    c.onclick=()=>open(p); c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(p)}};
+    G.appendChild(c);
+  });
+}
+draw();
+
+/* Panel lateral */
+let last=null;
+function open(p){
+  last=document.activeElement;
+  $('#d-body').innerHTML=`<span class="label">${p.k}</span><h3 id="d-title">${p.t}</h3><p>${p.long}</p><h4>Qué hace</h4><ul class="feat">${p.f.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Tecnología</h4><div class="tags">${p.s.map(x=>`<span class="tag">${x}</span>`).join('')}</div>`+
+   (p.url?`<h4>Código</h4><a class="btn primary" href="${p.url}" target="_blank" rel="noopener">Ver en GitHub ↗</a>`:`<h4>Código</h4><p>Repositorio privado de la empresa. Puedo hacer una demostración en una entrevista.</p>`);
+  $('#drawer').classList.add('show'); $('#scrim').classList.add('show'); $('#d-close').focus();
+}
+function close(){ $('#drawer').classList.remove('show'); $('#scrim').classList.remove('show'); if(last) last.focus(); }
+$('#d-close').onclick=close; $('#scrim').onclick=close;
+document.addEventListener('keydown',e=>{if(e.key==='Escape') close()});
+
+/* Trayectoria */
+$$('#tl button').forEach(b=>b.addEventListener('click',()=>{const li=b.parentElement;const o=li.classList.toggle('open');b.setAttribute('aria-expanded',o)}));
+
+/* Navegación activa */
+const links=$$('.bar nav a');
+const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting) links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)); }),{rootMargin:'-45% 0px -50% 0px'});
+$$('main section').forEach(s=>io.observe(s));
+
+/* Red viva del ecosistema */
+const cv=$('#net'), ctx=cv.getContext('2d');
+const labels=['Helpdesk','Caja Chica','Compras','Control IT','Indicadores','Vehículos','Power BI','SQL Server','MariaDB','Apps Script','Kotlin','Laravel','PayOut','Rendimientos','OTP','ETL','C#','Portal','Neuronas','Python','Documentos','Jornadas'];
+let W=0,H=0,dpr=1,pts=[],mouse={x:-999,y:-999};
+const css=v=>getComputedStyle(root).getPropertyValue(v).trim();
+function size(){
+  const r=cv.getBoundingClientRect(); dpr=Math.min(devicePixelRatio||1,2); W=r.width; H=r.height;
+  cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  const n=W<640?14:labels.length+14;
+  pts=Array.from({length:n},(_,i)=>({x:W*(.35+Math.random()*.65),y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,l:i<labels.length&&W>=640?labels[i]:null,r:i<labels.length?3:1.8}));
+  if(W<640) pts.forEach(p=>p.x=Math.random()*W);
+}
+function frame(){
+  const acc=css('--accent'), mut=css('--muted'), warm=css('--warm');
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+    if(!reduce){p.x+=p.vx;p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;}
+    const dx=p.x-mouse.x, dy=p.y-mouse.y, d=Math.hypot(dx,dy);
+    if(d<120&&d>0){p.x+=dx/d*1.2;p.y+=dy/d*1.2}
+  }
+  ctx.lineWidth=1;
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<150){ctx.globalAlpha=(1-d/150)*.45;ctx.strokeStyle=acc;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+  }
+  for(const p of pts){
+    const d=Math.hypot(p.x-mouse.x,p.y-mouse.y), near=d<170;
+    if(near){ctx.globalAlpha=(1-d/170)*.8;ctx.strokeStyle=warm;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke()}
+    ctx.globalAlpha=near?1:.85; ctx.fillStyle=near?warm:acc; ctx.beginPath(); ctx.arc(p.x,p.y,p.r+(near?1.5:0),0,7); ctx.fill();
+    if(p.l){ctx.globalAlpha=near?1:.55;ctx.fillStyle=near?css('--ink'):mut;ctx.font='12px "JetBrains Mono", monospace';ctx.fillText(p.l,p.x+8,p.y+4)}
+  }
+  ctx.globalAlpha=1;
+  if(!reduce) requestAnimationFrame(frame);
+}
+cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;if(reduce)frame()});
+cv.parentElement.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999});
+addEventListener('resize',()=>{size();if(reduce)frame()});
+size(); frame();
+new MutationObserver(()=>{if(reduce)frame()}).observe(root,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+</body>
+</html>
