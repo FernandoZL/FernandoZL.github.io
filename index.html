@@ -195,7 +195,7 @@ button.tag:hover,.tag.on{border-color:var(--warm);color:var(--warm)}
 .letter blockquote em{font-style:normal;color:var(--warm)}
 .letter .body{display:grid;gap:14px;color:var(--muted);font-size:17px}
 .letter .sign{color:var(--ink);font-family:var(--f-display);font-size:22px;font-weight:600}
-.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:40px}
 .ct{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
 .ct b{display:block;font-size:18px;margin-top:2px}
 .ct .arrow{font-size:22px;color:var(--muted);transition:transform .25s,color .25s}
@@ -246,10 +246,9 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
   <div class="hero" id="inicio">
     <canvas id="net" aria-hidden="true"></canvas>
     <div class="hero-in">
-      <span class="label">Desarrollo · Datos · Automatización</span>
-      <h1>Luis Fernándo<br><span class="ln2">Zuñiga Lemus</span></h1>
+      <h1 style="margin-top:0">Luis Fernándo<br><span class="ln2">Zuñiga Lemus</span></h1>
       <p class="typed" aria-live="polite">Construyo <span class="word" id="word">sistemas internos</span><span class="caret" aria-hidden="true"></span></p>
-      <p class="intro">Convierto procesos manuales en software que la gente usa todos los días: aplicaciones de gestión, tableros de datos y automatizaciones, con acceso seguro, trazabilidad y documentación.</p>
+      <p class="intro">Con acceso seguro, trazabilidad y documentación, para que otros lo usen y lo mantengan sin depender de mí.</p>
       <div class="cta">
         <a class="btn primary" href="#proyectos">Ver proyectos</a>
         <a class="btn" href="https://github.com/FernandoZL" target="_blank" rel="noopener">GitHub</a>
@@ -262,14 +261,13 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
   <section id="sobre-mi">
     <div class="sec-head">
       <h2>Sobre mí</h2>
-      <p>Estudiante de Ingeniería en Sistemas en la UMG, con más de diez años de experiencia laboral antes y durante la carrera.</p>
     </div>
     <div class="bento">
       <div class="cell spot c-about">
         <span class="label">Quién soy</span>
         <h3>Primero entiendo el proceso. Después escribo el software.</h3>
         <p>Trabajé años en exportaciones, importaciones y mejora continua. Ahí aprendí cómo se mueve una operación por dentro y dónde se pierden las horas.</p>
-        <p>Hoy desarrollo el ecosistema de aplicaciones de una corporación de entretenimiento familiar con parques en todo el país: mesa de servicio, caja chica, compras, indicadores, control de TI y los tableros con los que la dirección toma decisiones.</p>
+        <p>Hoy desarrollo los sistemas internos de una corporación de entretenimiento familiar, y estudio Ingeniería en Sistemas en la UMG.</p>
         <p>Soy autodidacta y ordenado. Documento lo que construyo, pruebo antes de publicar y cuido que otra persona pueda mantenerlo.</p>
       </div>
       <div class="cell spot c-clock">
@@ -292,15 +290,6 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
         <b>10<em>+</em></b>
         <small>años trabajando</small>
       </div>
-      <div class="cell spot c-now">
-        <span class="label">En qué estoy trabajando</span>
-        <ul>
-          <li>Indicadores: metas y resultados de los planes anuales<span>v0.9</span></li>
-          <li>Diseño compartido del ecosistema<span>v1.7</span></li>
-          <li>Helpdesk rumbo a producción<span>v2.4</span></li>
-          <li>Neuronas: memoria compartida para asistentes de IA<span>v5.4</span></li>
-        </ul>
-      </div>
       <div class="cell spot c-stack">
         <span class="label">Herramientas que uso</span>
         <div class="marquee" id="marquee"></div>
@@ -311,7 +300,7 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
   <section id="ecosistema">
     <div class="sec-head">
       <h2>Un ecosistema empresarial</h2>
-      <p>Lo que construí en mi trabajo actual. Toca cualquier pieza para ver qué hace y con qué se conecta. Todas comparten acceso, diseño y consola de mantenimiento.</p>
+      <p>Lo que construí en mi trabajo actual. Toca una pieza para ver con qué se conecta.</p>
     </div>
     <div class="eco" id="eco">
       <div class="col spot"><span class="label">1 · Operación</span><h3>Apps que usa el personal</h3><div class="nodes" data-col="ops"></div></div>
@@ -322,18 +311,12 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
       <div><span class="label" id="info-col">Selecciona una pieza</span><h3 id="info-t">Un ecosistema, tres capas</h3><p id="info-d">Las apps registran la operación, la capa de datos la integra y respalda, y los tableros la convierten en decisiones.</p></div>
       <div class="links" id="info-l"><span class="label">Tecnología</span><span class="tag">PHP 8.2</span><span class="tag">MariaDB</span><span class="tag">SQL Server</span><span class="tag">C#</span><span class="tag">Power BI</span></div>
     </div>
-    <div class="shared">
-      <div class="spot"><b>Acceso por OTP</b><span>Código al correo, roles, permisos y auditoría.</span></div>
-      <div class="spot"><b>Diseño compartido</b><span>Una hoja de estilos versionada para todas las apps.</span></div>
-      <div class="spot"><b>Consola MAIN.bat</b><span>Validar, respaldar, actualizar y publicar sin comandos.</span></div>
-      <div class="spot"><b>Documentado</b><span>Manuales, historial de cambios y pruebas en cada repositorio.</span></div>
-    </div>
   </section>
 
   <section id="proyectos">
     <div class="sec-head">
       <h2>Proyectos</h2>
-      <p>Filtra por área o toca una tecnología. Abre cualquier tarjeta para ver el detalle. Los proyectos de empresa son privados y puedo mostrarlos en una entrevista.</p>
+      <p>Los de empresa son privados; puedo mostrarlos en una entrevista.</p>
     </div>
     <div class="filters" id="filters" role="group" aria-label="Filtrar proyectos"></div>
     <div class="grid" id="grid"></div>
@@ -342,11 +325,11 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
   <section id="trayectoria">
     <div class="sec-head">
       <h2>Trayectoria</h2>
-      <p>De la logística de exportación a la mejora continua, y de ahí al desarrollo. Toca cada etapa para ver más.</p>
+      <p>De la logística a la mejora continua, y de ahí al desarrollo.</p>
     </div>
     <div class="two">
       <ol class="tl" id="tl">
-        <li class="now open"><button type="button" aria-expanded="true"><b>Desarrollo de sistemas internos</b><time>Actualidad</time><span class="org">Corporación Carrousel</span><span class="more">Diseño, desarrollo y mantenimiento de más de 25 aplicaciones, integraciones y tableros: PHP, Laravel, C#, Kotlin, Apps Script, SQL Server y Power BI, en Windows Server.</span></button></li>
+        <li class="now open"><button type="button" aria-expanded="true"><b>Desarrollo de sistemas internos</b><time>Actualidad</time><span class="org">Corporación Carrousel</span><span class="more">Aplicaciones web, integraciones de datos y tableros, desde la idea hasta producción.</span></button></li>
         <li><button type="button" aria-expanded="false"><b>Analista de Mejora Continua</b><time>Oct 2023</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Análisis de procesos y reportes, automatización con Power Automate, UiPath y Python, y tableros en Power BI.</span></button></li>
         <li><button type="button" aria-expanded="false"><b>Asistente de Importaciones y Exportaciones</b><time>2022 – 2023</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Gestión de embarques, documentación aduanera y control en SAP y Excel.</span></button></li>
         <li><button type="button" aria-expanded="false"><b>Auxiliar de Importaciones y Exportaciones</b><time>2020 – 2022</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Seguimiento de importaciones y exportaciones y registro de operaciones.</span></button></li>
@@ -378,14 +361,12 @@ footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--mute
       <blockquote>Me gusta encontrar el paso manual que le quita horas a un equipo y convertirlo en una herramienta que <em>funcione todos los días</em>.</blockquote>
       <div class="body">
         <p>Busco un equipo donde aportar en desarrollo, datos o automatización, y seguir creciendo como ingeniero.</p>
-        <p>Traigo algo poco común en un desarrollador: años del lado del usuario, en logística y mejora continua. Por eso pregunto cómo se trabaja antes de proponer cómo debería funcionar el sistema.</p>
         <p class="sign">Luis Fernándo Zuñiga Lemus</p>
       </div>
     </div>
     <div class="contact">
       <a class="ct spot" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener"><span><span class="label">LinkedIn</span><b>in/fernandozl</b></span><span class="arrow">↗</span></a>
       <a class="ct spot" href="https://github.com/FernandoZL" target="_blank" rel="noopener"><span><span class="label">GitHub</span><b>@FernandoZL</b></span><span class="arrow">↗</span></a>
-      <div class="ct spot"><span><span class="label">Disponibilidad</span><b>Abierto a nuevos retos</b></span><span class="arrow">→</span></div>
     </div>
   </section>
 
@@ -514,15 +495,6 @@ const P=[
  {id:'ventas',t:'Dashboard de Ventas',k:'Web · .NET 6',a:'Datos',v:'Empresa',d:'Ventas, inventario y rendimientos en la web, con reportes automáticos por correo.',
   long:'Tablero web en Windows Server con un servicio en segundo plano que prepara la caché de datos. Se instala y mantiene con tres archivos .bat.',
   f:['Ventas, inventario por bodega y rendimientos','Servicio en segundo plano para la caché','Reportes programados por correo','Instalación y reparación con un clic'],s:['ASP.NET Core','C#','SQL Server']},
- {id:'cumple',t:'Campañas de cumpleaños',k:'Marketing · v1.0',a:'Web',v:'Empresa',d:'Regalos de cumpleaños por correo con un único canje en toda la red de parques.',
-  long:'Registra clientes, envía su regalo por correo y controla que se canjee una sola vez en cualquier parque.',
-  f:['Registro de clientes y campañas','Envío de cupones por correo','Canje central por parque','Consola de mantenimiento con respaldo y prueba SMTP'],s:['PHP','MariaDB','SMTP']},
- {id:'compras',t:'Compras',k:'Procesos',a:'Web',v:'Empresa',d:'Solicitudes de compra clasificadas automáticamente según la política.',
-  long:'El solicitante llena un formulario sin iniciar sesión. El comprador gestiona estados, cotizaciones y evidencias, y todos reciben aviso por correo.',
-  f:['Clasificación automática según la política de compras','Cotizaciones de proveedores y seguimiento de estados','PDF de la solicitud','Manuales por pantalla'],s:['PHP','Dompdf','PHPMailer']},
- {id:'rendimientos',t:'Rendimientos de Máquinas',k:'Analítica · R34',a:'Datos',v:'Empresa',d:'Rendimiento por parque y por máquina con datos del punto de venta.',
-  long:'Compara parques y máquinas con créditos, jugadas, tickets y valor generado. Más de 30 versiones publicadas con historial detallado.',
-  f:['Rendimiento general y por parque','Fuentes Semnox y PayOut, solas o combinadas','Caché que se invalida al cambiar la fuente','Exportación completa a Excel'],s:['PHP','CSV','Excel']},
  {id:'zona',t:'Zona 502 TV',k:'Android TV',a:'Móvil',v:'Personal',d:'App nativa para celular y Android TV, manejable con control remoto.',
   long:'Proyecto personal publicado como APK firmado, con interfaz pensada para pantallas grandes y control remoto.',
   f:['Celular Android 8.0+ y Android TV / Google TV','Navegación con control remoto','APK firmado en releases'],s:['Kotlin','Android TV']},
