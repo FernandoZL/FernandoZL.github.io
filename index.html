@@ -4,590 +4,394 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta property="og:title" content="Luis Fernándo Zuñiga Lemus">
-<meta property="og:description" content="Sistemas internos, datos y automatización en Guatemala.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%237390ff%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Arial%22 font-weight=%22900%22 font-size=%2228%22 text-anchor=%22middle%22 fill=%22%230b0f1a%22%3EFZ%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="Business Intelligence, Power BI, SQL y automatización de procesos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23161a22%22/%3E%3Crect x=%2214%22 y=%2236%22 width=%228%22 height=%2214%22 fill=%22%238d97a9%22/%3E%3Crect x=%2228%22 y=%2226%22 width=%228%22 height=%2224%22 fill=%22%232f5bea%22/%3E%3Crect x=%2242%22 y=%2214%22 width=%228%22 height=%2236%22 fill=%22%23ffe066%22/%3E%3C/svg%3E">
 <title>Luis Fernándo Zuñiga Lemus</title>
-<meta name="description" content="Portafolio de Luis Fernándo Zuñiga Lemus: sistemas internos, datos y automatización en Guatemala.">
+<meta name="description" content="Portafolio de Luis Fernándo Zuñiga Lemus: Business Intelligence, Power BI, SQL y automatización de procesos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: oscuro primero. Cabecera con red viva del ecosistema (canvas), grilla bento, mapa interactivo de 3 columnas, proyectos filtrables con panel lateral y trayectoria. */
+/* Layout: como un informe bien hecho. Portada con ficha, cifras reales, trayectoria en gráfico de tiempo, casos en lista + detalle, habilidades y cierre. Claro primero. */
 :root{
-  --bg:#0b0f1a; --surface:#121827; --surface-2:#182036; --line:#242d47;
-  --ink:#eef1f8; --muted:#97a1bb; --accent:#7390ff; --accent-ink:#0b0f1a;
-  --warm:#f5a742; --jade:#3ccfa0; --glow:rgba(115,144,255,.16);
-  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-  --r:14px; --wrap:1280px; color-scheme:dark;
+  --bg:#f7f8fa; --paper:#ffffff; --ink:#161a22; --muted:#5b6270; --line:#e1e4ea;
+  --accent:#2f5bea; --mark:#ffe066;
+  --a-com:#8d97a9; --a-mej:#2c9a74; --a-bi:#2f5bea; --a-ti:#c9821a;
+  --f-display:"Archivo","Segoe UI",system-ui,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
-  --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eef1f8; --line:#dce1ee;
-  --ink:#10162a; --muted:#596279; --accent:#2347d8; --accent-ink:#ffffff;
-  --warm:#b4600a; --jade:#0d8a64; --glow:rgba(35,71,216,.10); color-scheme:light}}
-:root[data-theme="light"]{
-  --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eef1f8; --line:#dce1ee;
-  --ink:#10162a; --muted:#596279; --accent:#2347d8; --accent-ink:#ffffff;
-  --warm:#b4600a; --jade:#0d8a64; --glow:rgba(35,71,216,.10); color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11141a; --paper:#181c24; --ink:#eceef2; --muted:#a2a9b6; --line:#2a303b;
+  --accent:#86a2ff; --mark:rgba(255,214,77,.32);
+  --a-com:#7f899b; --a-mej:#47c095; --a-bi:#86a2ff; --a-ti:#e9a646; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11141a; --paper:#181c24; --ink:#eceef2; --muted:#a2a9b6; --line:#2a303b;
+  --accent:#86a2ff; --mark:rgba(255,214,77,.32);
+  --a-com:#7f899b; --a-mej:#47c095; --a-bi:#86a2ff; --a-ti:#e9a646; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{margin:0}
 img{max-width:100%}
-[hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
-.wrap{max-width:var(--wrap);margin-inline:auto}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:1160px;margin-inline:auto}
 a{color:var(--accent);text-underline-offset:3px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1;text-wrap:balance}
 p{margin:0}
 button{font:inherit;color:inherit;cursor:pointer}
-.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kicker{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mark{background:linear-gradient(transparent 58%,var(--mark) 58%,var(--mark) 92%,transparent 92%);padding:0 .08em}
 
-/* Barra superior */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
-  padding-inline:max(16px, env(safe-area-inset-left, 0px));background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:600}
-.mono{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-family:var(--f-display);font-weight:800;font-size:15px;letter-spacing:-.03em}
-.bar nav{display:flex;gap:4px}
-.bar nav a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px;transition:color .2s,background .2s}
-.bar nav a:hover{color:var(--ink)}
-.bar nav a.on{color:var(--ink);background:var(--surface-2)}
-.iconbtn{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
-.iconbtn:hover{border-color:var(--accent)}
-.iconbtn svg{width:18px;height:18px}
+/* Encabezado */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;border-bottom:1px solid var(--line);font-family:var(--f-display);font-size:15px}
+.top b{font-weight:700}
+.top nav{display:flex;gap:22px;align-items:center}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--ink)}
+.theme{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:5px 10px;font-family:var(--f-mono);font-size:12px}
 
-/* Hero con red */
-.hero{position:relative;padding-block:72px 64px;min-height:560px;display:flex;align-items:center}
-#net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.hero-in{position:relative;z-index:1;max-width:780px;pointer-events:none}
-.hero-in a,.hero-in button{pointer-events:auto}
-.status{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13px;color:var(--muted)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 0 var(--jade);animation:pulse 2.2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--jade) 60%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.hero h1{font-size:clamp(40px,7.4vw,98px);font-weight:800;letter-spacing:-.035em;margin-top:22px}
-.hero h1 .ln2{color:var(--muted);font-weight:400}
-.typed{font-family:var(--f-display);font-size:clamp(22px,2.6vw,32px);font-weight:600;margin-top:20px;min-height:1.3em}
-.typed .word{color:var(--accent)}
-.typed .caret{display:inline-block;width:3px;height:.9em;background:var(--warm);margin-left:4px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.hero .intro{color:var(--muted);font-size:18px;max-width:58ch;margin-top:16px}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface);transition:transform .2s,border-color .2s}
-.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.hint{position:absolute;right:0;bottom:24px;z-index:1;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+/* Portada */
+.cover{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px;padding-block:64px 48px;align-items:start}
+.cover h1{font-size:clamp(42px,6.4vw,80px);font-weight:800;letter-spacing:-.03em;margin-top:14px}
+.cover .lead{font-size:clamp(20px,2vw,24px);margin-top:24px;max-width:34ch;font-family:var(--f-display);font-weight:500;line-height:1.35}
+.cover .bio{margin-top:20px;color:var(--muted);max-width:60ch}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;font-family:var(--f-display);font-size:15px}
+.links a{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink);text-decoration:none;font-weight:700}
+.links a.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.links a:hover{border-color:var(--accent)}
+.ficha{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 22px}
+.ficha dl{margin:0}
+.ficha div{display:grid;gap:2px;padding-block:14px;border-bottom:1px solid var(--line)}
+.ficha div:last-child{border-bottom:0}
+.ficha dt{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ficha dd{margin:0;font-size:16.5px}
 
-/* Spotlight compartido */
-.spot{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;isolation:isolate}
-.spot::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;
-  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 60%)}
-.spot:hover::before{opacity:1}
+/* Cifras */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.kpi{padding:22px 20px 20px;border-right:1px solid var(--line)}
+.kpi:last-child{border-right:0}
+.kpi b{display:block;font-family:var(--f-display);font-size:44px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.kpi span{display:block;margin-top:8px;font-size:15.5px;color:var(--muted);line-height:1.4}
+.note{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:10px}
 
-/* Bento */
-section{padding-block:72px}
-.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 32px;margin-bottom:28px}
-.sec-head h2{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.025em}
-.sec-head p{color:var(--muted);max-width:56ch}
-.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(150px,auto);gap:14px}
-.cell{padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.c-about{grid-column:span 2;grid-row:span 2}
-.c-about p{color:var(--muted);font-size:16px}
-.c-about h3{font-size:26px}
-.c-clock .t{font-family:var(--f-display);font-size:40px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.c-clock small,.c-stat small{color:var(--muted);font-size:14px}
-.c-stat b{font-family:var(--f-display);font-size:48px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-.c-stat b em{font-style:normal;color:var(--accent)}
-.c-now{grid-column:span 2}
-.c-now ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.c-now li{display:flex;justify-content:space-between;gap:12px;font-size:15px;border-bottom:1px dashed var(--line);padding-bottom:8px}
-.c-now li span{color:var(--muted);font-family:var(--f-mono);font-size:12px;white-space:nowrap}
-.c-stack{grid-column:span 4;padding:18px 0;gap:12px}
-.c-stack .label{padding-inline:22px}
-.marquee{display:flex;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.track{display:flex;gap:10px;padding-right:10px;flex-shrink:0;animation:slide 40s linear infinite}
-.marquee:hover .track{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-100%)}}
-.chip{font-family:var(--f-mono);font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;white-space:nowrap;color:var(--ink);background:var(--surface-2)}
+section{padding-block:72px 8px}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px 56px;align-items:end;margin-bottom:30px}
+.head h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-.02em}
+.head p{color:var(--muted)}
 
-/* Ecosistema */
-.eco{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px}
-.col{padding:20px;min-width:0}
-.col h3{font-size:18px;margin:6px 0 14px}
-.nodes{display:flex;flex-wrap:wrap;gap:8px}
-.node{padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);font-size:14px;transition:opacity .25s,border-color .25s,background .25s,transform .2s}
-.node:hover{transform:translateY(-1px);border-color:var(--accent)}
-.node[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.node.lit{border-color:var(--warm);color:var(--ink)}
-.eco.sel .node:not(.lit):not([aria-pressed="true"]){opacity:.32}
-.info{margin-top:14px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;padding:22px;min-height:118px}
-.info h3{font-size:22px}
-.info p{color:var(--muted);margin-top:6px}
-.info .links{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
-.info .links .label{width:100%}
-.shared{margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.shared div{padding:18px}
-.shared b{display:block;font-size:15px;margin-bottom:2px}
-.shared span{color:var(--muted);font-size:14px}
+/* Trayectoria: gráfico de tiempo */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.chart{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 18px 8px}
+.chart svg{display:block;min-width:720px;width:100%;height:auto}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .yr{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
+.chart .co{fill:var(--ink);font-family:var(--f-display);font-size:13px;font-weight:700}
+.chart .bar{cursor:pointer;transition:opacity .2s}
+.chart .bar rect{rx:4}
+.chart .bar text{font-family:var(--f-display);font-size:11.5px;font-weight:700;fill:#fff;pointer-events:none}
+.chart.has-sel .bar:not(.on){opacity:.6}
+.chart .bar.on rect{stroke:var(--ink);stroke-width:2}
+.chart .bar:focus-visible{outline:none}
+.chart .bar:focus-visible rect{stroke:var(--ink);stroke-width:2}
+.chart .today{stroke:var(--ink);stroke-dasharray:3 3}
+.chart .today-t{fill:var(--ink);font-family:var(--f-mono);font-size:11px}
+.role{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:12px 48px;margin-top:22px;padding:24px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.role h3{font-size:24px;font-weight:800}
+.role .when{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-top:8px}
+.role .area{display:inline-block;margin-top:12px;font-family:var(--f-mono);font-size:12px;padding:3px 9px;border-radius:4px;color:#fff}
+.role ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.role li::marker{color:var(--muted)}
+.chart-hint{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:10px}
 
-/* Proyectos */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center}
-.filters button{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+/* Casos */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;font-family:var(--f-display);font-size:14.5px}
+.filters button{padding:7px 14px;border-radius:6px;border:1px solid var(--line);background:var(--paper);font-weight:700}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.filters .clear{border-style:dashed;color:var(--warm)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.card{padding:22px;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%;transition:transform .25s,border-color .25s}
-.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
-.card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.card h3{font-size:22px}
-.card p{color:var(--muted);font-size:15px}
-.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
-.tag{font-family:var(--f-mono);font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:transparent}
-button.tag:hover,.tag.on{border-color:var(--warm);color:var(--warm)}
-.pill{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--warm) 16%,transparent);color:var(--warm)}
-.pill.pub{background:color-mix(in srgb,var(--jade) 16%,transparent);color:var(--jade)}
-.card .open{font-size:14px;font-weight:600;color:var(--accent)}
-.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted)}
+.cases{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:20px;align-items:start}
+.list{display:grid;border-top:1px solid var(--line)}
+.list button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;text-align:left;padding:14px 4px;border:0;border-bottom:1px solid var(--line);background:none}
+.list button b{font-family:var(--f-display);font-size:17px;font-weight:700}
+.list button span{font-family:var(--f-mono);font-size:12px;color:var(--muted);align-self:center}
+.list button small{grid-column:1/-1;color:var(--muted);font-size:15px}
+.list button:hover b{color:var(--accent)}
+.list button[aria-selected="true"]{background:var(--paper);padding-inline:14px;box-shadow:inset 3px 0 0 var(--accent)}
+.detail{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:28px;position:sticky;top:20px}
+.detail h3{font-size:clamp(24px,2.6vw,32px);font-weight:800;margin-top:8px}
+.detail h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:22px 0 8px}
+.detail ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.detail .res{border-left:3px solid var(--mark);padding-left:14px;font-size:18.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--f-mono);font-size:12.5px;padding:3px 9px;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
+.detail .repo{display:inline-block;margin-top:22px;font-family:var(--f-display);font-weight:700;font-size:15px}
+.detail .priv{margin-top:22px;font-size:15px;color:var(--muted)}
 
-/* Panel lateral */
-.scrim{position:fixed;inset:0;background:rgba(5,8,15,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
-.scrim.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(520px,100%);background:var(--surface);border-left:1px solid var(--line);
-  padding:calc(env(safe-area-inset-top,0px) + 24px) max(24px, env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) 24px;
-  overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden}
-.drawer.show{transform:none;visibility:visible}
-.drawer .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);right:max(18px, env(safe-area-inset-right,0px))}
-.drawer h3{font-size:32px;margin:10px 0 12px;padding-right:48px}
-.drawer p{color:var(--muted)}
-.drawer h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px;font-weight:500}
-.drawer ul.feat{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-.drawer ul.feat li{padding-left:22px;position:relative}
-.drawer ul.feat li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent)}
-.drawer .tags{display:flex;flex-wrap:wrap;gap:6px}
+/* Habilidades */
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.skills h3{font-size:17px;font-weight:800;padding-bottom:10px;border-bottom:2px solid var(--ink);margin-bottom:12px}
+.skills ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:16.5px}
+.extra{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:44px}
+.extra h3{font-size:17px;font-weight:800;padding-bottom:10px;border-bottom:2px solid var(--ink);margin-bottom:12px}
+.extra ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:16.5px}
+.extra li span{display:block;font-size:14.5px;color:var(--muted)}
 
-/* Trayectoria */
-.two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px}
-.tl{list-style:none;margin:0;padding:0;position:relative}
-.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl li{position:relative;padding-left:36px}
-.tl li::before{content:"";position:absolute;left:0;top:22px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--line)}
-.tl li.now::before{border-color:var(--accent);background:var(--accent)}
-.tl button{width:100%;text-align:left;background:none;border:0;padding:16px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;border-bottom:1px solid var(--line)}
-.tl b{font-size:17px}
-.tl time{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
-.tl .org{color:var(--muted);font-size:14px;grid-column:1/-1}
-.tl .more{grid-column:1/-1;color:var(--muted);font-size:15px;max-height:0;overflow:hidden;transition:max-height .35s ease,margin .35s}
-.tl li.open .more{max-height:160px;margin-top:6px}
-.tl li.now b{color:var(--accent)}
-.side{padding:22px}
-.side + .side{margin-top:14px}
-.side h3{font-size:19px;margin-bottom:12px}
-.side ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.side li span{display:block;color:var(--muted);font-size:14px}
+/* Cierre */
+.close{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;align-items:end;padding-block:56px;margin-top:72px;border-top:1px solid var(--line)}
+.close p.big{font-family:var(--f-display);font-size:clamp(26px,3vw,38px);font-weight:700;line-height:1.2;letter-spacing:-.015em}
+.close .links{justify-content:flex-end;margin-top:0}
+footer{padding-block:20px 36px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-/* Carta y contacto */
-.letter{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start}
-.letter blockquote{margin:0;font-family:var(--f-display);font-size:clamp(26px,3.2vw,40px);font-weight:600;line-height:1.2;letter-spacing:-.015em}
-.letter blockquote em{font-style:normal;color:var(--warm)}
-.letter .body{display:grid;gap:14px;color:var(--muted);font-size:17px}
-.letter .sign{color:var(--ink);font-family:var(--f-display);font-size:22px;font-weight:600}
-.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:40px}
-.ct{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.ct b{display:block;font-size:18px;margin-top:2px}
-.ct .arrow{font-size:22px;color:var(--muted);transition:transform .25s,color .25s}
-.ct:hover .arrow{transform:translate(3px,-3px);color:var(--accent)}
-footer{padding-block:28px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-
-@media (max-width:1050px){
-  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .c-stack{grid-column:span 2}
-  .eco{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .shared{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .two,.letter{grid-template-columns:1fr}
-  .bar nav{display:none}
+@media (max-width:960px){
+  .cover,.head,.role,.cases,.close{grid-template-columns:1fr}
+  .cover{gap:32px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi:nth-child(2){border-right:0}
+  .kpi:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .detail{position:static}
+  .close .links{justify-content:flex-start}
+  .top nav a{display:none}
 }
-@media (max-width:640px){
-  .hero{padding-block:48px;min-height:0}
-  .hint{display:none}
-  .bento{grid-template-columns:1fr}
-  .c-about,.c-now,.c-stack{grid-column:auto;grid-row:auto}
-  .grid,.contact,.shared,.info{grid-template-columns:1fr}
+@media (max-width:560px){
+  body{font-size:17px}
+  .skills,.extra{grid-template-columns:1fr}
+  .kpi b{font-size:36px}
 }
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  html{scroll-behavior:auto}
-}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 </head>
 <body>
-<header class="bar">
-  <div class="wrap">
-    <a class="brand" href="#inicio"><span class="mono">FZ</span><span>Luis Fernándo Zuñiga</span></a>
+<div class="wrap">
+  <header class="top">
+    <b>Luis Fernándo Zuñiga</b>
     <nav aria-label="Secciones">
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#ecosistema">Ecosistema</a>
-      <a href="#proyectos">Proyectos</a>
       <a href="#trayectoria">Trayectoria</a>
+      <a href="#casos">Casos</a>
+      <a href="#habilidades">Habilidades</a>
       <a href="#contacto">Contacto</a>
+      <button class="theme" id="theme" type="button">Tema</button>
     </nav>
-    <button class="iconbtn" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-    </button>
+  </header>
+
+  <div class="cover">
+    <div>
+      <p class="kicker">Business Intelligence · Power BI · SQL · Automatización</p>
+      <h1>Luis Fernándo Zuñiga Lemus</h1>
+      <p class="lead">Ordeno los <span class="mark">datos</span> de una empresa para que las decisiones se tomen con números claros.</p>
+      <p class="bio">Trabajo en análisis, Business Intelligence y tecnología. Diseño dashboards, automatizo reportes y, cuando hace falta, desarrollo la aplicación que genera el dato. Llegué aquí desde el comercio exterior y la mejora continua, así que conozco el proceso antes de medirlo.</p>
+      <div class="links">
+        <a class="main" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/FernandoZL" target="_blank" rel="noopener">GitHub</a>
+        <a href="#casos">Ver casos</a>
+      </div>
+    </div>
+    <aside class="ficha" aria-label="Ficha">
+      <dl>
+        <div><dt>Puesto actual</dt><dd>Analista Sr. Business Intelligence &amp; TI</dd></div>
+        <div><dt>Enfoque</dt><dd>Power BI, SQL Server, ETL y KPIs</dd></div>
+        <div><dt>Automatización</dt><dd>UiPath, Power Automate, Python y Apps Script</dd></div>
+        <div><dt>Formación</dt><dd>Ingeniería en Sistemas, Universidad Mariano Gálvez</dd></div>
+        <div><dt>Idiomas</dt><dd>Español nativo · Inglés intermedio</dd></div>
+      </dl>
+    </aside>
   </div>
-</header>
 
-<main class="wrap">
-  <div class="hero" id="inicio">
-    <canvas id="net" aria-hidden="true"></canvas>
-    <div class="hero-in">
-      <h1 style="margin-top:0">Luis Fernándo<br><span class="ln2">Zuñiga Lemus</span></h1>
-      <p class="typed" aria-live="polite">Construyo <span class="word" id="word">sistemas internos</span><span class="caret" aria-hidden="true"></span></p>
-      <p class="intro">Con acceso seguro, trazabilidad y documentación, para que otros lo usen y lo mantengan sin depender de mí.</p>
-      <div class="cta">
-        <a class="btn primary" href="#proyectos">Ver proyectos</a>
-        <a class="btn" href="https://github.com/FernandoZL" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-    <span class="hint">Mueve el mouse sobre la red ↗</span>
+  <div class="kpis">
+    <div class="kpi"><b>40%</b><span>menos tiempo en procesos automatizados</span></div>
+    <div class="kpi"><b>+30%</b><span>de eficiencia con UiPath y Power Automate</span></div>
+    <div class="kpi"><b>12</b><span>años de experiencia, desde 2014</span></div>
+    <div class="kpi"><b>50+</b><span>repositorios con código propio</span></div>
   </div>
-
-  <section id="sobre-mi">
-    <div class="sec-head">
-      <h2>Sobre mí</h2>
-    </div>
-    <div class="bento">
-      <div class="cell spot c-about">
-        <span class="label">Quién soy</span>
-        <h3>Primero entiendo el proceso. Después escribo el software.</h3>
-        <p>Trabajé años en exportaciones, importaciones y mejora continua. Ahí aprendí cómo se mueve una operación por dentro y dónde se pierden las horas.</p>
-        <p>Hoy desarrollo los sistemas internos de una corporación de entretenimiento familiar, y estudio Ingeniería en Sistemas en la UMG.</p>
-        <p>Soy autodidacta y ordenado. Documento lo que construyo, pruebo antes de publicar y cuido que otra persona pueda mantenerlo.</p>
-      </div>
-      <div class="cell spot c-clock">
-        <span class="label">Hora en Guatemala</span>
-        <span class="t" id="clock">--:--</span>
-        <small id="clockday">GMT−6</small>
-      </div>
-      <div class="cell spot c-stat">
-        <span class="label">GitHub</span>
-        <b>50<em>+</em></b>
-        <small>repositorios con código propio</small>
-      </div>
-      <div class="cell spot c-stat">
-        <span class="label">Empresa</span>
-        <b>25<em>+</em></b>
-        <small>sistemas, scripts y tableros en producción</small>
-      </div>
-      <div class="cell spot c-stat">
-        <span class="label">Experiencia</span>
-        <b>10<em>+</em></b>
-        <small>años trabajando</small>
-      </div>
-      <div class="cell spot c-stack">
-        <span class="label">Herramientas que uso</span>
-        <div class="marquee" id="marquee"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="ecosistema">
-    <div class="sec-head">
-      <h2>Un ecosistema empresarial</h2>
-      <p>Lo que construí en mi trabajo actual. Toca una pieza para ver con qué se conecta.</p>
-    </div>
-    <div class="eco" id="eco">
-      <div class="col spot"><span class="label">1 · Operación</span><h3>Apps que usa el personal</h3><div class="nodes" data-col="ops"></div></div>
-      <div class="col spot"><span class="label">2 · Datos</span><h3>Integración y respaldo</h3><div class="nodes" data-col="data"></div></div>
-      <div class="col spot"><span class="label">3 · Decisión</span><h3>Tableros</h3><div class="nodes" data-col="dec"></div></div>
-    </div>
-    <div class="info spot" id="info" aria-live="polite">
-      <div><span class="label" id="info-col">Selecciona una pieza</span><h3 id="info-t">Un ecosistema, tres capas</h3><p id="info-d">Las apps registran la operación, la capa de datos la integra y respalda, y los tableros la convierten en decisiones.</p></div>
-      <div class="links" id="info-l"><span class="label">Tecnología</span><span class="tag">PHP 8.2</span><span class="tag">MariaDB</span><span class="tag">SQL Server</span><span class="tag">C#</span><span class="tag">Power BI</span></div>
-    </div>
-  </section>
-
-  <section id="proyectos">
-    <div class="sec-head">
-      <h2>Proyectos</h2>
-      <p>Los de empresa son privados; puedo mostrarlos en una entrevista.</p>
-    </div>
-    <div class="filters" id="filters" role="group" aria-label="Filtrar proyectos"></div>
-    <div class="grid" id="grid"></div>
-  </section>
+  <p class="note">Las dos primeras cifras son resultados de mis proyectos de automatización en operaciones y distribución.</p>
 
   <section id="trayectoria">
-    <div class="sec-head">
+    <div class="head">
       <h2>Trayectoria</h2>
-      <p>De la logística a la mejora continua, y de ahí al desarrollo.</p>
+      <p>Doce años en cuatro empresas. Del comercio exterior pasé a mejora continua y de ahí a Business Intelligence. Toca una barra para ver qué hacía en ese puesto.</p>
     </div>
-    <div class="two">
-      <ol class="tl" id="tl">
-        <li class="now open"><button type="button" aria-expanded="true"><b>Desarrollo de sistemas internos</b><time>Actualidad</time><span class="org">Corporación Carrousel</span><span class="more">Aplicaciones web, integraciones de datos y tableros, desde la idea hasta producción.</span></button></li>
-        <li><button type="button" aria-expanded="false"><b>Analista de Mejora Continua</b><time>Oct 2023</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Análisis de procesos y reportes, automatización con Power Automate, UiPath y Python, y tableros en Power BI.</span></button></li>
-        <li><button type="button" aria-expanded="false"><b>Asistente de Importaciones y Exportaciones</b><time>2022 – 2023</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Gestión de embarques, documentación aduanera y control en SAP y Excel.</span></button></li>
-        <li><button type="button" aria-expanded="false"><b>Auxiliar de Importaciones y Exportaciones</b><time>2020 – 2022</time><span class="org">Suministros y Alimentos S.A.</span><span class="more">Seguimiento de importaciones y exportaciones y registro de operaciones.</span></button></li>
-        <li><button type="button" aria-expanded="false"><b>Asistente de Exportaciones</b><time>2014 – 2019</time><span class="org">Transmercasa · Wavin Amanco</span><span class="more">Cinco años en comercio exterior, desde la práctica hasta la gestión de exportaciones a Centroamérica.</span></button></li>
-      </ol>
+    <div class="legend" id="legend"></div>
+    <div class="chart" id="chart"></div>
+    <div class="role" id="role" aria-live="polite"></div>
+  </section>
+
+  <section id="casos">
+    <div class="head">
+      <h2>Casos</h2>
+      <p>Trabajos de BI, automatización y desarrollo. Los de empresa son privados; con gusto los muestro en una entrevista.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar casos"></div>
+    <div class="cases">
+      <div class="list" id="list" role="tablist" aria-label="Casos"></div>
+      <article class="detail" id="detail" role="tabpanel" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="head">
+      <h2>Habilidades</h2>
+      <p>Lo que uso en el trabajo diario.</p>
+    </div>
+    <div class="skills">
+      <div><h3>Business Intelligence</h3><ul><li>Power BI y DAX</li><li>Looker Studio</li><li>Dashboards ejecutivos</li><li>KPIs y storytelling con datos</li></ul></div>
+      <div><h3>Datos</h3><ul><li>SQL Server</li><li>ETL e integración de datos</li><li>Modelado de datos</li><li>Excel avanzado y Power Query</li></ul></div>
+      <div><h3>Automatización</h3><ul><li>UiPath (RPA)</li><li>Power Automate</li><li>Python</li><li>Google Apps Script</li></ul></div>
+      <div><h3>Desarrollo y sistemas</h3><ul><li>PHP y MariaDB</li><li>C# y Kotlin</li><li>SAP y Odoo</li><li>Git y GitHub</li></ul></div>
+    </div>
+    <div class="extra">
       <div>
-        <div class="side spot">
-          <h3>Formación</h3>
-          <ul>
-            <li>Ingeniería en Sistemas de Información y Ciencias de la Computación<span>Universidad Mariano Gálvez de Guatemala</span></li>
-            <li>Bachillerato en Computación con Orientación Comercial<span>José Milla y Vidaurre · 2013</span></li>
-            <li>Operador de Computadoras<span>INTECAP · 2013</span></li>
-          </ul>
-        </div>
-        <div class="side spot">
-          <h3>Cursos e idiomas</h3>
-          <ul>
-            <li>Power BI Essentials<span>2023</span></li>
-            <li>Excel básico, intermedio y avanzado<span>2022 – 2023</span></li>
-            <li>Español nativo · Inglés intermedio<span>Idiomas</span></li>
-          </ul>
-        </div>
+        <h3>Certificaciones y cursos</h3>
+        <ul>
+          <li>ISO 9001:2015 e ISO 19011:2018<span>Gestión de la calidad y auditoría interna</span></li>
+          <li>UiPath RPA<span>Automatización robótica de procesos</span></li>
+          <li>Microsoft Power BI<span>Business Intelligence y visualización de datos</span></li>
+          <li>Microsoft Excel avanzado</li>
+          <li>Análisis de negocios para ciencia de datos · Introducción a la IA</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Formación</h3>
+        <ul>
+          <li>Ingeniería en Sistemas<span>Universidad Mariano Gálvez de Guatemala · desde 2016</span></li>
+          <li>Bachillerato en Computación con orientación Comercial</li>
+          <li>Operador de Computadoras<span>INTECAP · 2013 – 2014</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="contacto">
-    <div class="letter">
-      <blockquote>Me gusta encontrar el paso manual que le quita horas a un equipo y convertirlo en una herramienta que <em>funcione todos los días</em>.</blockquote>
-      <div class="body">
-        <p>Busco un equipo donde aportar en desarrollo, datos o automatización, y seguir creciendo como ingeniero.</p>
-        <p class="sign">Luis Fernándo Zuñiga Lemus</p>
-      </div>
+  <div class="close" id="contacto">
+    <p class="big">Si tu equipo necesita ver mejor sus números o dejar de armar reportes a mano, conversemos.</p>
+    <div class="links">
+      <a class="main" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener">Escríbeme en LinkedIn</a>
+      <a href="https://github.com/FernandoZL" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <div class="contact">
-      <a class="ct spot" href="https://www.linkedin.com/in/fernandozl/" target="_blank" rel="noopener"><span><span class="label">LinkedIn</span><b>in/fernandozl</b></span><span class="arrow">↗</span></a>
-      <a class="ct spot" href="https://github.com/FernandoZL" target="_blank" rel="noopener"><span><span class="label">GitHub</span><b>@FernandoZL</b></span><span class="arrow">↗</span></a>
-    </div>
-  </section>
-
-  <footer><span>© 2026 Luis Fernándo Zuñiga Lemus</span><span>Hecho a mano con HTML, CSS y JavaScript</span></footer>
-</main>
-
-<div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title">
-  <button class="iconbtn x" id="d-close" type="button" aria-label="Cerrar detalle">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-  </button>
-  <div id="d-body"></div>
-</aside>
+  </div>
+  <footer><span>Luis Fernándo Zuñiga Lemus · Guatemala</span><span>2026</span></footer>
+</div>
 
 <script>
 (function(){
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* Tema */
+const $=s=>document.querySelector(s);
 const root=document.documentElement;
-try{const t=localStorage.getItem('fz-theme'); if(t) root.dataset.theme=t;}catch(e){}
+try{const t=localStorage.getItem('lfz-theme'); if(t) root.dataset.theme=t;}catch(e){}
 $('#theme').addEventListener('click',()=>{
-  const dark=root.dataset.theme? root.dataset.theme==='dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+  const dark=root.dataset.theme? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
   root.dataset.theme=dark?'light':'dark';
-  try{localStorage.setItem('fz-theme',root.dataset.theme);}catch(e){}
+  try{localStorage.setItem('lfz-theme',root.dataset.theme);}catch(e){}
 });
 
-/* Palabra que cambia */
-const words=['sistemas internos','tableros de datos','automatizaciones','apps móviles','herramientas que se usan a diario'];
-const w=$('#word'); let wi=0;
-if(!reduce){
-  const type=(txt,i=0)=>{w.textContent=txt.slice(0,i); if(i<txt.length) setTimeout(()=>type(txt,i+1),55); else setTimeout(erase,2200);};
-  const erase=()=>{const t=w.textContent; if(t.length){w.textContent=t.slice(0,-1); setTimeout(erase,28);} else {wi=(wi+1)%words.length; type(words[wi]);}};
-  setTimeout(erase,2400);
-}
-
-/* Reloj de Guatemala */
-const fmtT=new Intl.DateTimeFormat('es-GT',{timeZone:'America/Guatemala',hour:'2-digit',minute:'2-digit',hour12:false});
-const fmtD=new Intl.DateTimeFormat('es-GT',{timeZone:'America/Guatemala',weekday:'long',day:'numeric',month:'long'});
-const tick=()=>{const d=new Date(); $('#clock').textContent=fmtT.format(d); $('#clockday').textContent=fmtD.format(d)+' · GMT−6';};
-tick(); setInterval(tick,15000);
-
-/* Marquesina */
-const stack=['PHP 8','Laravel','MariaDB','SQL Server','C# · .NET','Kotlin','Jetpack Compose','Java','Python','JavaScript','Power BI','DAX','Apps Script','PowerShell','Git','GitHub Actions','Windows Server','UiPath','Power Automate','SAP','Excel avanzado','Node.js','MCP'];
-const mk=()=>{const t=document.createElement('div');t.className='track';stack.forEach(s=>{const c=document.createElement('span');c.className='chip';c.textContent=s;t.appendChild(c)});return t;};
-$('#marquee').append(mk(),mk()); $$('#marquee .track')[1].setAttribute('aria-hidden','true');
-
-/* Spotlight */
-document.addEventListener('pointermove',e=>{
-  const el=e.target.closest&&e.target.closest('.spot'); if(!el) return;
-  const r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px');
-});
-
-/* Ecosistema */
-const N={
- helpdesk:['ops','Helpdesk','Mesa de servicio con clasificación ITSM, prioridades y SLA, conversación interna y pública, adjuntos, reapertura y encuestas.',['PHP','MariaDB','OTP']],
- caja:['ops','Caja Chica','Fondos de caja chica con liquidaciones, comprobantes y aprobaciones por rol.',['PHP','MariaDB']],
- compras:['ops','Compras','Solicitudes clasificadas según la política de compras, cotizaciones, PDF y aviso por correo.',['PHP','Dompdf','PHPMailer']],
- controlit:['ops','Control IT','Inventario de TI, servidores, respaldos, evidencias y cartas de entrega.',['PHP','MariaDB']],
- indicadores:['ops','Indicadores','Metas y resultados de los planes anuales, con aprobación, reajustes y reporte para nóminas.',['PHP','Chart.js']],
- vehiculos:['ops','Control de Vehículos','Control de la flota con panel web y vista móvil.',['Laravel','Tailwind']],
- documentos:['ops','Control de Documentos','Registro y seguimiento de documentos de la empresa.',['PHP','MariaDB']],
- tickets:['ops','Tickets de Destrucción','Registro y seguimiento de los tickets de destrucción.',['PHP','MariaDB']],
- rendimientos:['ops','Rendimientos de Máquinas','Rendimiento por parque y por máquina con datos del punto de venta, exportable a Excel.',['PHP','CSV','Excel']],
- payout:['ops','PayOut','Control de PayOut en los parques.',['PHP','JavaScript']],
- cumple:['ops','Campañas de cumpleaños','Regalos de cumpleaños por correo con un solo canje en toda la red de parques.',['PHP','SMTP']],
- tuvoz:['ops','Tu Voz','Canal para que el personal envíe sus comentarios.',['PHP']],
- directorio:['ops','Directorio','Directorio interno de contactos.',['PHP']],
- jornadas:['ops','Control de Jornadas','Registro de jornadas del personal.',['PHP']],
- portal:['ops','Portal de Sistemas','Entrada única a todas las aplicaciones del ecosistema.',['HTML','CSS']],
- sql:['data','SQL Server','Punto de venta (Semnox), SAP y RRHH: las fuentes de la empresa.',['SQL Server']],
- almacen:['data','Almacén analítico','Almacén analítico separado. Copia los datos sin tocar las bases operativas ni importar datos personales.',['SQL Server','ETL']],
- etl:['data','ETL de rendimientos','Prepara los datos de máquinas para los reportes.',['Batch','SQL']],
- export:['data','Exportadores','Ventas y RRHH desde SQL Server hacia los tableros.',['C#','.NET']],
- backup:['data','Respaldo a Google Drive','Respaldo automático de las bases SQL en la nube.',['PowerShell']],
- monitor:['data','Monitor de servidores','Vigila servicios y recursos de los servidores.',['PowerShell']],
- bi:['dec','BI corporativo','Tablero de Power BI para la dirección: ventas, finanzas, balance, máquinas, inventario y personal, con semáforos y glosario.',['Power BI','DAX']],
- ventas:['dec','Dashboard de Ventas','Web en Windows Server con ventas, inventario por bodega, rendimientos y reportes por correo.',['ASP.NET Core','C#']],
- rrhh:['dec','Dashboard RRHH','Indicadores de personal.',['HTML','JavaScript']]
-};
-const E=[];
-['helpdesk','caja','compras','controlit','indicadores','vehiculos','documentos','tickets','rendimientos','payout','cumple','tuvoz','jornadas'].forEach(a=>E.push([a,'almacen']));
-E.push(['rendimientos','etl'],['payout','etl'],['sql','almacen'],['sql','export'],['sql','etl'],['sql','backup'],['monitor','sql'],['portal','helpdesk'],['portal','caja'],['portal','directorio'],
-  ['almacen','bi'],['export','ventas'],['export','rrhh'],['etl','ventas'],['etl','bi']);
-const nb=id=>E.flatMap(([a,b])=>a===id?[b]:b===id?[a]:[]);
-const colName={ops:'Operación',data:'Datos',dec:'Decisión'};
-Object.entries(N).forEach(([id,[col,name]])=>{
-  const b=document.createElement('button'); b.type='button'; b.className='node'; b.textContent=name; b.dataset.id=id; b.setAttribute('aria-pressed','false');
-  document.querySelector(`.nodes[data-col="${col}"]`).appendChild(b);
-});
-let sel=null;
-$('#eco').addEventListener('click',e=>{
-  const b=e.target.closest('.node'); if(!b) return;
-  const id=b.dataset.id; sel = sel===id? null : id;
-  $$('.node').forEach(n=>{n.setAttribute('aria-pressed',n.dataset.id===sel);n.classList.remove('lit')});
-  $('#eco').classList.toggle('sel',!!sel);
-  if(!sel) return;
-  const lit=new Set(nb(sel));
-  [...lit].forEach(x=>{ if(N[x][0]==='data') nb(x).forEach(y=>{ if(N[y][0]!==N[sel][0] && N[y][0]!=='data') lit.add(y); }); });
-  lit.delete(sel);
-  lit.forEach(x=>document.querySelector(`.node[data-id="${x}"]`).classList.add('lit'));
-  const [col,name,desc,tech]=N[sel];
-  $('#info-col').textContent=colName[col]; $('#info-t').textContent=name; $('#info-d').textContent=desc;
-  const L=$('#info-l'); L.innerHTML='<span class="label">Tecnología · conecta con '+lit.size+'</span>';
-  tech.forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;L.appendChild(s)});
-});
-
-/* Proyectos */
-const P=[
- {id:'helpdesk',t:'Mesa de servicio (Helpdesk)',k:'Service desk · v2.4',a:'Web',v:'Empresa',d:'Mesa de servicio interna con ITSM, SLA y trazabilidad completa de cada caso.',
-  long:'La mesa de servicio de toda la corporación. Reemplazó una versión anterior y hoy pasa una validación técnica de preproducción que revisa esquema, rutas, estilos y exportaciones antes de salir a producción.',
-  f:['Acceso por OTP, roles, permisos y auditoría','Clasificación ITSM, prioridad, SLA y estados','Conversación pública e interna con adjuntos','Confirmación del solicitante, reapertura y encuestas','Agenda y visitas técnicas ligadas a tickets','43 tablas en un esquema limpio y versionado'],s:['PHP','MariaDB','JavaScript','XLSX']},
- {id:'bi',t:'BI corporativo',k:'Business Intelligence',a:'Datos',v:'Empresa',d:'Tablero de Power BI para la dirección, sobre un almacén que une todas las fuentes.',
-  long:'Reúne ventas, finanzas, máquinas, inventario y personal en un solo proyecto. Cada tarjeta lleva un semáforo y una explicación corta, y un glosario explica cómo se calcula cada indicador.',
-  f:['11 páginas: resumen, ventas, estado de resultados, balance, compras, máquinas, inventario y personal','Almacén analítico separado: no toca las bases operativas','Une punto de venta, SAP, RRHH y las apps internas','Scripts que verifican las cifras de DAX'],s:['Power BI','DAX','SQL Server','Python']},
- {id:'indicadores',t:'Indicadores de gestión',k:'Gestión por resultados',a:'Web',v:'Empresa',d:'Metas y resultados de los planes anuales, con aprobación y reporte para nóminas.',
-  long:'Muestra a cada persona sus metas y le permite capturar resultados con evidencia. Los jefes aprueban, con o sin pago, y la nómina recibe un reporte listo.',
-  f:['KPIs y hojas de ruta separados, cargados desde el plan anual','Aprobación con o sin pago y reajustes de meta','Tablero por rol: administración, gerencia y supervisión','Usuarios importados desde Caja Chica'],s:['PHP','MariaDB','Chart.js']},
- {id:'app',t:'App de clientes',k:'App móvil + API',a:'Móvil',v:'Empresa',d:'App Android para clientes con cupones QR y canje único en toda la red.',
-  long:'Los clientes entran con su correo y un código, sin contraseña. Ven el cupón de cumpleaños de cada festejado con QR, obtienen ofertas y consultan parques. El personal canjea desde un panel web.',
-  f:['Acceso sin contraseña con código de 6 dígitos','Cupones con QR y canje único en toda la red','Panel web para cajeros y administración','35 pruebas de punta a punta contra una base de prueba'],s:['Kotlin','Jetpack Compose','PHP','MariaDB']},
- {id:'neuronas',t:'Neuronas para Obsidian',k:'Herramienta propia · v5.4',a:'Herramientas',v:'Público',url:'https://github.com/FernandoZL/obsidian',d:'Memoria compartida entre asistentes de IA dentro de una bóveda de Obsidian.',
-  long:'Un plugin y un servidor MCP que conectan notas, proyectos, tareas y recuerdos. Las notas quedan en Markdown, así que siempre son tuyas y se pueden editar.',
-  f:['Memoria compartida entre varias consolas de IA','Plugin para Windows, macOS, Linux, iOS y Android','Sincronización con iCloud en Linux','Publicación automática con GitHub Actions'],s:['JavaScript','Node.js','MCP','Obsidian']},
- {id:'ventas',t:'Dashboard de Ventas',k:'Web · .NET 6',a:'Datos',v:'Empresa',d:'Ventas, inventario y rendimientos en la web, con reportes automáticos por correo.',
-  long:'Tablero web en Windows Server con un servicio en segundo plano que prepara la caché de datos. Se instala y mantiene con tres archivos .bat.',
-  f:['Ventas, inventario por bodega y rendimientos','Servicio en segundo plano para la caché','Reportes programados por correo','Instalación y reparación con un clic'],s:['ASP.NET Core','C#','SQL Server']},
- {id:'zona',t:'Zona 502 TV',k:'Android TV',a:'Móvil',v:'Personal',d:'App nativa para celular y Android TV, manejable con control remoto.',
-  long:'Proyecto personal publicado como APK firmado, con interfaz pensada para pantallas grandes y control remoto.',
-  f:['Celular Android 8.0+ y Android TV / Google TV','Navegación con control remoto','APK firmado en releases'],s:['Kotlin','Android TV']},
- {id:'citas',t:'Sistema de Citas Médicas',k:'Universidad · Programación II',a:'Web',v:'Académico',d:'Proyecto final: pacientes, médicos, citas, recetas e historial médico.',
-  long:'Proyecto final del curso de Programación II en la Universidad Mariano Gálvez.',
-  f:['Usuarios, pacientes y médicos','Citas, consultas y recetas','Historial médico y reportes'],s:['Java','POO','JDBC']},
- {id:'votacion',t:'Votación de disfraces',k:'Evento interno',a:'Automatización',v:'Empresa',d:'Votación pública del mejor disfraz, hecha en Google Apps Script.',
-  long:'Una web app rápida para un evento de la corporación, sin servidor propio.',
-  f:['Votación pública desde el celular','Resultados en Google Sheets','Publicada como Web App'],s:['Apps Script','Google Sheets']}
+/* ---------- Trayectoria ---------- */
+const AREAS={com:['Comercio exterior','--a-com'],mej:['Mejora continua','--a-mej'],bi:['Business Intelligence','--a-bi'],ti:['BI y TI','--a-ti']};
+const COS=['Amanco Wavin Centroamérica','Suministros & Alimentos','Grupo Buen Rollo','Corporación Carrousel'];
+const R=[
+ {co:0,a:'com',s:2014.75,e:2019.71,t:'Auxiliar de Exportaciones',short:'Exportaciones',when:'Oct 2014 – Sep 2019',
+  b:['Coordinación de solicitudes y del proceso de exportación','Licencias de exportación y FAUCAS por medio del SEADEX','Reportes de exportación','Control de back orders y órdenes de compra']},
+ {co:1,a:'com',s:2020.75,e:2022.37,t:'Auxiliar de Importación y Exportación',short:'Auxiliar',when:'Oct 2020 – May 2022',
+  b:['Documentos de exportación e importación','Control de gastos de exportaciones y compras','Trámites comerciales, pólizas y reportes mensuales']},
+ {co:1,a:'com',s:2022.37,e:2023.79,t:'Asistente de Importación y Exportación',short:'Asistente',when:'May 2022 – Oct 2023',
+  b:['Documentos de exportación, incluidos permisos zoosanitarios','Pólizas, trámites para exportar y costeos para importar','Control de gastos y reportes mensuales','Seguimiento a clientes hasta la entrega en bodega']},
+ {co:1,a:'mej',s:2023.79,e:2024.42,t:'Analista de Mejora Continua',short:'Mejora',when:'Oct 2023 – May 2024',
+  b:['Monitoreo y optimización de procesos internos para reducir costos','Gestión del WMS del centro de distribución','Seguimiento de indicadores clave de desempeño']},
+ {co:1,a:'bi',s:2024.42,e:2025.12,t:'Business Intelligence Operaciones',short:'BI',when:'Jun 2024 – Feb 2025',
+  b:['Informes interactivos en Power BI y Looker Studio para operaciones y logística','Automatización con UiPath y Power Automate: eficiencia +30% y hasta 40% menos tiempo','Flujos automáticos para reducir errores']},
+ {co:2,a:'bi',s:2025.37,e:2025.79,t:'Analista de Desempeño y BI',short:'Desempeño',when:'May 2025 – Oct 2025',
+  b:['Consolidación y monitoreo de planes de negocio y cumplimiento de metas','Dashboards en Power BI con SQL Server, Odoo y bancos','Automatización de reportes financieros y de RRHH']},
+ {co:3,a:'ti',s:2025.79,e:2026.9,t:'Analista Sr. Business Intelligence & TI',short:'BI & TI',when:'Oct 2025 – actualidad',
+  b:['Dashboards ejecutivos en Power BI con indicadores financieros, comerciales y de personal','Integración de SQL Server, ERP y aplicaciones internas en un almacén analítico','Análisis de desempeño y cumplimiento de metas para gerencias','Aplicaciones web con PHP, Apps Script y Python para automatizar procesos internos']}
 ];
-const areas=['Todos','Web','Datos','Móvil','Automatización','Herramientas'];
-let area='Todos', tech=null;
-const F=$('#filters');
-function drawFilters(){
-  F.innerHTML='';
-  areas.forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.setAttribute('aria-pressed',a===area);b.onclick=()=>{area=a;draw()};F.appendChild(b)});
-  if(tech){const c=document.createElement('button');c.type='button';c.className='clear';c.textContent='× '+tech;c.setAttribute('aria-label','Quitar filtro '+tech);c.onclick=()=>{tech=null;draw()};F.appendChild(c)}
+const L=$('#legend');
+Object.values(AREAS).forEach(([n,v])=>{const s=document.createElement('span');s.innerHTML=`<i style="background:var(${v})"></i>${n}`;L.appendChild(s)});
+
+const X0=2014,X1=2027,lw=190,W=1000,rowH=46,top=26,H=top+COS.length*rowH+8;
+const x=y=>lw+(y-X0)/(X1-X0)*(W-lw-10);
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'group','aria-label':'Gráfico de tiempo de mi trayectoria laboral'});
+for(let y=X0;y<=X1;y++){
+  el('line',{x1:x(y),x2:x(y),y1:top-6,y2:H-4,class:'grid'},svg);
+  if(y<X1){const t=el('text',{x:x(y)+4,y:14,class:'yr'},svg);t.textContent=y;}
 }
-function draw(){
-  drawFilters();
-  const G=$('#grid'); G.innerHTML='';
-  const list=P.filter(p=>(area==='Todos'||p.a===area)&&(!tech||p.s.includes(tech)));
-  if(!list.length){G.innerHTML='<p class="empty">No hay proyectos con ese filtro.</p>';return}
-  list.forEach(p=>{
-    const c=document.createElement('article'); c.className='card spot'; c.tabIndex=0; c.setAttribute('role','button'); c.setAttribute('aria-label','Ver detalle de '+p.t);
-    c.innerHTML=`<div class="top"><span class="label">${p.k}</span><span class="pill ${p.v==='Público'?'pub':''}">${p.v}</span></div><h3>${p.t}</h3><p>${p.d}</p><div class="tags"></div><span class="open">Ver detalle →</span>`;
-    const T=c.querySelector('.tags');
-    p.s.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='tag'+(s===tech?' on':'');b.textContent=s;b.onclick=e=>{e.stopPropagation();tech=tech===s?null:s;area='Todos';draw()};T.appendChild(b)});
-    c.onclick=()=>open(p); c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(p)}};
-    G.appendChild(c);
+COS.forEach((c,i)=>{const t=el('text',{x:0,y:top+i*rowH+rowH/2+4,class:'co'},svg);t.textContent=c;});
+const tx=x(2026.88); el('line',{x1:tx,x2:tx,y1:top-6,y2:H-4,class:'today'},svg);
+const bars=R.map((r,i)=>{
+  const g=el('g',{class:'bar',tabindex:0,role:'button','aria-label':`${r.t}, ${r.when}`},svg);
+  const bx=x(r.s), bw=Math.max(x(r.e)-bx-2,8);
+  el('rect',{x:bx,y:top+r.co*rowH+8,width:bw,height:rowH-16,fill:`var(${AREAS[r.a][1]})`},g);
+  if(bw>52){const t=el('text',{x:bx+8,y:top+r.co*rowH+rowH/2+4},g);t.textContent=r.short;}
+  g.addEventListener('click',()=>pick(i));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}});
+  return g;
+});
+$('#chart').appendChild(svg);
+const hint=document.createElement('p');hint.className='chart-hint';hint.textContent='La línea punteada marca hoy. El espacio entre 2019 y 2020 corresponde a trabajos temporales fuera del área.';
+$('#chart').after(hint);
+function pick(i){
+  const r=R[i];
+  bars.forEach((b,j)=>b.classList.toggle('on',i===j)); $('#chart').classList.add('has-sel');
+  $('#role').innerHTML=`<div><p class="kicker">${COS[r.co]}</p><h3 style="margin-top:6px">${r.t}</h3><p class="when">${r.when}</p><span class="area" style="background:var(${AREAS[r.a][1]})">${AREAS[r.a][0]}</span></div><ul>${r.b.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+}
+pick(R.length-1);
+
+/* ---------- Casos ---------- */
+const C=[
+ {id:'bi',c:'BI',t:'BI corporativo para la dirección',sub:'Power BI sobre un almacén analítico',
+  ctx:'La dirección necesitaba ver ventas, finanzas, máquinas, inventario y personal en un solo lugar. Los datos estaban repartidos entre el punto de venta, el ERP, RRHH y varias aplicaciones internas.',
+  did:['Diseñé un almacén analítico separado que copia los datos sin tocar las bases operativas','Construí el modelo y once páginas de reporte con semáforos','Agregué un glosario que explica cómo se calcula cada indicador y de qué fuente sale','Escribí scripts que comprueban las cifras de DAX contra la fuente'],
+  res:'Un solo tablero para las reuniones de dirección, con una conexión y números que se pueden rastrear.',tools:['Power BI','DAX','SQL Server','Python']},
+ {id:'rpa',c:'Automatización',t:'Automatización en distribución',sub:'UiPath y Power Automate',
+  ctx:'En las operaciones de una distribuidora de alimentos, había procesos y reportes repetitivos que consumían horas cada semana.',
+  did:['Automaticé procesos repetitivos con UiPath y Power Automate','Armé informes interactivos en Power BI y Looker Studio para operaciones y logística','Implementé flujos automáticos para reducir errores de captura'],
+  res:'Hasta 40% menos tiempo en los procesos automatizados y una mejora de eficiencia superior al 30%.',tools:['UiPath','Power Automate','Power BI','Looker Studio']},
+ {id:'metas',c:'BI',t:'Desempeño y metas de franquicias',sub:'Power BI con SQL Server, Odoo y bancos',
+  ctx:'Una desarrolladora y operadora de franquicias necesitaba seguir sus planes de negocio y el cumplimiento de metas de cada unidad.',
+  did:['Consolidé y monitoreé los planes de negocio y sus metas','Creé dashboards que integran SQL Server, Odoo y estados bancarios','Automaticé los reportes financieros y de RRHH'],
+  res:'Gerencias y líderes con seguimiento de metas en un tablero, sin reportes armados a mano.',tools:['Power BI','SQL Server','Odoo']},
+ {id:'kpi',c:'Desarrollo',t:'Captura de indicadores',sub:'Metas, resultados y aprobación',
+  ctx:'Los resultados de los planes anuales necesitaban un lugar único para capturarse, con evidencia y aprobación.',
+  did:['Desarrollé una aplicación web donde cada persona ve sus metas y captura resultados con evidencia','Agregué aprobación del jefe, con o sin pago, y reajustes de meta','Generé el reporte para nómina directamente desde los datos aprobados'],
+  res:'Un solo registro de resultados, aprobado y listo para nómina y para el tablero de dirección.',tools:['PHP','MariaDB','Chart.js']},
+ {id:'ventas',c:'BI',t:'Dashboard web de ventas',sub:'ASP.NET Core en Windows Server',
+  ctx:'Los equipos necesitaban consultar ventas, inventario por bodega y rendimientos desde el navegador.',
+  did:['Desarrollé un tablero web con acceso por código','Programé un servicio en segundo plano que prepara la caché de datos','Configuré reportes automáticos por correo'],
+  res:'Consultas rápidas desde el navegador y reportes que llegan solos.',tools:['C#','ASP.NET Core','SQL Server']},
+ {id:'gws',c:'Automatización',t:'Procesos en Google Workspace',sub:'Apps Script y PowerShell',
+  ctx:'Varios procesos vivían en hojas de cálculo, formularios y correos sueltos.',
+  did:['Desarrollé web apps en Google Apps Script sobre Sheets, Forms y Gmail','Hice votaciones y formularios para eventos internos','Automaticé respaldos de SQL Server a Google Drive'],
+  res:'Menos trabajo manual y respaldos que no dependen de que alguien se acuerde.',tools:['Apps Script','Google Sheets','PowerShell']},
+ {id:'help',c:'Desarrollo',t:'Mesa de servicio',sub:'Soporte de TI con SLA',
+  ctx:'El área de TI necesitaba dar prioridad, seguimiento y métricas a cada solicitud de soporte.',
+  did:['Desarrollé una mesa de servicio con clasificación, prioridad y SLA','Agregué conversación interna, adjuntos, reapertura y encuestas','Guardé cada acción para tener trazabilidad y métricas de atención'],
+  res:'Cada caso queda registrado y medido, y esos datos alimentan los indicadores de TI.',tools:['PHP','MariaDB','JavaScript']},
+ {id:'app',c:'Desarrollo',t:'App de clientes con cupones',sub:'Android y API',
+  ctx:'Los cupones de cumpleaños y ofertas necesitaban un canje controlado en todos los puntos de venta.',
+  did:['Desarrollé una app Android con acceso por código, sin contraseña','Hice los cupones con QR y canje único en toda la red','Agregué un panel web para cajeros y 35 pruebas de punta a punta'],
+  res:'Cupones digitales con un control de canje que no se puede duplicar.',tools:['Kotlin','Jetpack Compose','PHP']},
+ {id:'neuronas',c:'Desarrollo',t:'Neuronas para Obsidian',sub:'Proyecto personal de código abierto',url:'https://github.com/FernandoZL/obsidian',
+  ctx:'Uso varios asistentes de IA y cada uno empezaba de cero en cada conversación.',
+  did:['Creé un plugin para Obsidian y un servidor MCP que comparten memoria entre asistentes','Lo hice funcionar en Windows, Linux y móvil','Automaticé la publicación con GitHub Actions'],
+  res:'Mis notas, proyectos y decisiones quedan en Markdown y cualquier asistente puede retomarlos.',tools:['JavaScript','Node.js','MCP']}
+];
+const cats=['Todos','BI','Automatización','Desarrollo'];
+let cat='Todos', cur='bi';
+function render(){
+  const F=$('#filters'); F.innerHTML='';
+  cats.forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.setAttribute('aria-pressed',c===cat);b.onclick=()=>{cat=c;const f=vis();if(!f.some(x=>x.id===cur))cur=f[0].id;render()};F.appendChild(b)});
+  const Lst=$('#list'); Lst.innerHTML='';
+  vis().forEach(x=>{
+    const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-selected',x.id===cur);
+    b.innerHTML=`<b>${x.t}</b><span>${x.c}</span><small>${x.sub}</small>`;
+    b.onclick=()=>{cur=x.id;render(); if(innerWidth<960) $('#detail').scrollIntoView({behavior:'smooth',block:'start'})};
+    Lst.appendChild(b);
   });
+  const d=C.find(x=>x.id===cur);
+  $('#detail').innerHTML=`<p class="kicker">${d.c} · ${d.sub}</p><h3>${d.t}</h3><h4>Contexto</h4><p>${d.ctx}</p><h4>Qué hice</h4><ul>${d.did.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Resultado</h4><p class="res">${d.res}</p><h4>Herramientas</h4><div class="tags">${d.tools.map(x=>`<span class="tag">${x}</span>`).join('')}</div>`+
+    (d.url?`<a class="repo" href="${d.url}" target="_blank" rel="noopener">Ver el código en GitHub →</a>`:`<p class="priv">Proyecto privado de empresa.</p>`);
 }
-draw();
-
-/* Panel lateral */
-let last=null;
-function open(p){
-  last=document.activeElement;
-  $('#d-body').innerHTML=`<span class="label">${p.k}</span><h3 id="d-title">${p.t}</h3><p>${p.long}</p><h4>Qué hace</h4><ul class="feat">${p.f.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Tecnología</h4><div class="tags">${p.s.map(x=>`<span class="tag">${x}</span>`).join('')}</div>`+
-   (p.url?`<h4>Código</h4><a class="btn primary" href="${p.url}" target="_blank" rel="noopener">Ver en GitHub ↗</a>`:`<h4>Código</h4><p>Repositorio privado de la empresa. Puedo hacer una demostración en una entrevista.</p>`);
-  $('#drawer').classList.add('show'); $('#scrim').classList.add('show'); $('#d-close').focus();
-}
-function close(){ $('#drawer').classList.remove('show'); $('#scrim').classList.remove('show'); if(last) last.focus(); }
-$('#d-close').onclick=close; $('#scrim').onclick=close;
-document.addEventListener('keydown',e=>{if(e.key==='Escape') close()});
-
-/* Trayectoria */
-$$('#tl button').forEach(b=>b.addEventListener('click',()=>{const li=b.parentElement;const o=li.classList.toggle('open');b.setAttribute('aria-expanded',o)}));
-
-/* Navegación activa */
-const links=$$('.bar nav a');
-const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting) links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)); }),{rootMargin:'-45% 0px -50% 0px'});
-$$('main section').forEach(s=>io.observe(s));
-
-/* Red viva del ecosistema */
-const cv=$('#net'), ctx=cv.getContext('2d');
-const labels=['Helpdesk','Caja Chica','Compras','Control IT','Indicadores','Vehículos','Power BI','SQL Server','MariaDB','Apps Script','Kotlin','Laravel','PayOut','Rendimientos','OTP','ETL','C#','Portal','Neuronas','Python','Documentos','Jornadas'];
-let W=0,H=0,dpr=1,pts=[],mouse={x:-999,y:-999};
-const css=v=>getComputedStyle(root).getPropertyValue(v).trim();
-function size(){
-  const r=cv.getBoundingClientRect(); dpr=Math.min(devicePixelRatio||1,2); W=r.width; H=r.height;
-  cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-  const n=W<640?14:labels.length+14;
-  pts=Array.from({length:n},(_,i)=>({x:W*(.35+Math.random()*.65),y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,l:i<labels.length&&W>=640?labels[i]:null,r:i<labels.length?3:1.8}));
-  if(W<640) pts.forEach(p=>p.x=Math.random()*W);
-}
-function frame(){
-  const acc=css('--accent'), mut=css('--muted'), warm=css('--warm');
-  ctx.clearRect(0,0,W,H);
-  for(const p of pts){
-    if(!reduce){p.x+=p.vx;p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;}
-    const dx=p.x-mouse.x, dy=p.y-mouse.y, d=Math.hypot(dx,dy);
-    if(d<120&&d>0){p.x+=dx/d*1.2;p.y+=dy/d*1.2}
-  }
-  ctx.lineWidth=1;
-  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
-    const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
-    if(d<150){ctx.globalAlpha=(1-d/150)*.45;ctx.strokeStyle=acc;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
-  }
-  for(const p of pts){
-    const d=Math.hypot(p.x-mouse.x,p.y-mouse.y), near=d<170;
-    if(near){ctx.globalAlpha=(1-d/170)*.8;ctx.strokeStyle=warm;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke()}
-    ctx.globalAlpha=near?1:.85; ctx.fillStyle=near?warm:acc; ctx.beginPath(); ctx.arc(p.x,p.y,p.r+(near?1.5:0),0,7); ctx.fill();
-    if(p.l){ctx.globalAlpha=near?1:.55;ctx.fillStyle=near?css('--ink'):mut;ctx.font='12px "JetBrains Mono", monospace';ctx.fillText(p.l,p.x+8,p.y+4)}
-  }
-  ctx.globalAlpha=1;
-  if(!reduce) requestAnimationFrame(frame);
-}
-cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;if(reduce)frame()});
-cv.parentElement.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999});
-addEventListener('resize',()=>{size();if(reduce)frame()});
-size(); frame();
-new MutationObserver(()=>{if(reduce)frame()}).observe(root,{attributes:true,attributeFilter:['data-theme']});
+const vis=()=>C.filter(x=>cat==='Todos'||x.c===cat);
+render();
 })();
 </script>
 
